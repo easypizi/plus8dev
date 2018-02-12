@@ -1,0 +1,44 @@
+@use postcss-map {
+  basePath: "./theme/";
+  maps: ["plus.yml"]
+}
+
+block(paragraph).mod(theme plus) {
+  margin: 0;
+
+  & + & {
+    margin-top: .5em;
+    margin-bottom: 0
+  }
+
+  .mod(size xs) {
+    font-size: map(plus, font-size, xs);
+    line-height: map(plus, line-height, xs)
+  }
+
+  .mod(size s) {
+    font-size: map(plus, font-size, s);
+    line-height: map(plus, line-height, s)
+  }
+
+  .mod(size m) {
+    font-size: map(plus, font-size, m);
+    line-height: map(plus, line-height, m)
+  }
+
+  .mod(size l) {
+    font-size: map(plus, font-size, l);
+    line-height: map(plus, line-height, l)
+  }
+
+  .mod(size xl) {
+    font-size: map(plus, font-size, xl);
+    line-height: map(plus, line-height, xl)
+  }
+
+  .mod(size xxl) {
+    font-size: map(plus, font-size, xxl);
+    line-height: map(plus, line-height, xxl)
+  }
+}
+

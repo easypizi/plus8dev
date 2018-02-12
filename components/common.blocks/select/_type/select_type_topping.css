@@ -1,0 +1,30 @@
+.select_type_topping {
+  display: flex;
+  align-items: center;
+}
+
+
+.select__icon-add {
+  width: 32px;
+  height: 32px;
+  background-image: svg-load('../../icon/svg/add_topping.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+.select__icon-add_ed {
+  width: 32px;
+  height: 32px;
+  background-image: svg-load('../../icon/svg/added_topping.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+
+.select_type_topping .select__arrow::after {
+  display: none;
+}
+
+

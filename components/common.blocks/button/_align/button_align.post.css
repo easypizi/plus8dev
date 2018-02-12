@@ -1,0 +1,17 @@
+block(button) {
+  .mod(align start) {
+    .elem(text) {
+      text-align: start
+    }
+  }
+  .mod(align center) {
+    .elem(text) {
+      text-align: center
+    }
+  }
+  .mod(align end) {
+    .elem(text) {
+      text-align: end
+    }
+  }
+}

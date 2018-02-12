@@ -1,0 +1,14 @@
+block(button) {
+  /* all: initial */
+  display: inline-block;
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+  user-select: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+

@@ -1,0 +1,9 @@
+block(paragraph) {
+  /* all: initial */
+  display: block;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+  margin: 0
+}

@@ -1,0 +1,8 @@
+({
+    shouldDeps: [
+        'header',
+        {
+          block: 'image'
+        }
+    ]
+})

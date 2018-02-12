@@ -1,0 +1,92 @@
+block(select).mod(theme plus) {
+  width: 100%;
+  vertical-align: bottom;
+  border-radius: 3px;
+  outline: none;
+
+  .elem(arrow) {
+    display: inline-block;
+    float: right;
+  }
+
+  .elem(arrow):after {
+    content: '\00A0';
+    width: 10px;
+    background-image: svg-load('../../../../components/common.blocks/icon/svg/select-arrow-white.svg');
+    visibility: visible!important;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-1px, 0);
+    position: absolute;
+    right: 10px;
+    top: 0px;
+  }
+
+  .elem(button) {
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  block(button).elem(text) {
+    display: block;
+    text-align: left;
+    padding-right: 2em;
+    padding-left: 33px;
+
+    &:empty:before {
+      content: '\00a0'
+    }
+  }
+
+  .mod(width available) {
+    width: 100%
+  }
+
+  .mod(focused) {
+    background-color: rgb(218, 226, 242, 0.4);
+    border-radius: 3px;
+  }
+
+  .mod(has-error) {
+    block(button) {
+      border-color: red;
+    }
+  }
+
+  .mod(size s) {
+    width: 102px;
+
+    block(button) {
+      width: 102px;
+      font-size: 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 3px;
+    }
+
+    block(button).elem(text) {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+  }
+
+  .mod(size m) {
+    width: 164px;
+
+    block(button) {
+      width: 164px;
+      font-size: 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 3px;
+    }
+    block(button).elem(text) {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+  }
+
+}
+
+

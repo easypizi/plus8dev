@@ -1,0 +1,22 @@
+block(wave){
+  &.mod(bottom){
+    background-image: svg-load('img/wave-bottom.svg');
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+
+    @media(max-width: 760px){
+      background-image: svg-load('img/mobilesidewave.svg');
+      width: 100%;
+      height: 200px;
+      position: static;
+    }
+  }
+}

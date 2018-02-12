@@ -1,0 +1,23 @@
+block(footer) {
+    position: absolute;
+    top: calc(2 * 100vh);
+    transform: translateY(-50px);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s;
+
+    &.mod(white){
+      top: unset;
+/*      bottom: 0;*/
+      transform: translate(0);
+    }
+
+
+    elem(logo){
+      max-width: 135px;
+    }
+}
+
+

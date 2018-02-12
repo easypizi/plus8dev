@@ -1,0 +1,85 @@
+block(select).mod(type topping) {
+  width: 100%;
+  vertical-align: bottom;
+  border-radius: 3px;
+  outline: none;
+
+  .elem(button) {
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  block(button).elem(text) {
+    display: block;
+    text-align: left;
+    padding-right: 2em;
+    padding-left: 33px;
+
+    &:empty:before {
+      content: '\00a0'
+    }
+  }
+
+  .mod(width available) {
+    width: 100%
+  }
+
+  .mod(focused) {
+    background-color: rgb(218, 226, 242, 0.4);
+    border-radius: 3px;
+
+    &.mod(focused) {
+      background-color: unset;
+    }
+  }
+
+  .mod(has-error) {
+    block(button) {
+      border-color: red;
+    }
+  }
+
+  .mod(size s) {
+    width: 102px;
+
+    block(button) {
+      width: 102px;
+      font-size: 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 3px;
+    }
+
+    block(button).elem(text) {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+
+  }
+
+  .mod(size m) {
+    width: 164px;
+
+    block(button) {
+      width: 164px;
+      font-size: 14px;
+      border-radius: 3px;
+
+      &block(button) {
+        border: none;
+        width: unset;
+        background: unset;
+      }
+    }
+    block(button).elem(text) {
+      padding-right: 0;
+      padding-left: 0px;
+
+      &block(button).elem(text) {
+        padding: 0;
+      }
+    }
+
+  }
+
+}

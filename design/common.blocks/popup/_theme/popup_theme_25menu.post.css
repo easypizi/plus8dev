@@ -1,0 +1,40 @@
+block(popup).mod(theme plus) {
+  display: none;
+  visibility: hidden;
+  margin: -9999px 0 0 -9999px;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-out;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1)
+            , 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+  animation-fill-mode: forwards;
+  border-radius: 6px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 12px 0px;
+  background-color: white;
+
+  .mod(js inited) {
+    display: block
+  }
+
+  .mod(visible) {
+    visibility: visible;
+    margin: 0;
+    margin-top: 20px;
+    -webkit-transform:translate3d(0,0,25px);
+  }
+}
+
+.popup__chars {
+  padding: 0px 20px;
+}
+
+
+.popup__close {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 4%;
+  right: 5%;
+}

@@ -1,0 +1,50 @@
+@use postcss-map {
+  basePath: "./theme/";
+  maps: ["plus.yml"]
+}
+
+block(text).mod(theme plus) {
+
+  @each $size in (xs, s, m, l, xl, xxl) {
+    .mod(size $size) {
+      font-size: map(plus, font-size, $(size));
+    }
+  }
+
+
+  .mod(negative) {
+    color: map(plus, color, red)
+  }
+
+  .mod(positive) {
+    color: map(plus, color, green)
+  }
+
+  .mod(inverse) {
+    color: map(plus, color, white)
+  }
+
+  .mod(nude) {
+    color: map(plus, color, bermuda_light)
+  }
+
+  .mod(special) {
+    color: map(plus, color, yellow)
+  }
+
+  .mod(strikeout) {
+    color: map(plus, color, grey_dark)
+  }
+
+  .mod(script sup) {
+    line-height: 1;
+    font-size: .7em;
+    padding: 0 map(plus, padding-horizontal);
+  }
+
+  .mod(script sub) {
+    line-height: 1;
+    font-size: .7em;
+    padding: 0 map(plus, padding-horizontal);
+  }
+}

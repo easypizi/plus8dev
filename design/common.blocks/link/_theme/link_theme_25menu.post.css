@@ -1,0 +1,40 @@
+@use postcss-map {
+  basePath: "./theme/";
+  maps: ["plus.yml"]
+}
+
+block(link).mod(theme plus) {
+  color: map(plus, color, blue);
+  text-decoration: none;
+
+  &:active,
+  .mod(state active) {
+    color: map(plus, color, red)
+  }
+
+  &[disabled],
+  .mod(state disabled) {
+    color: map(plus, color, red);
+    pointer-events: none;
+    cursor: not-allowed
+  }
+
+  &:focus,
+  .mod(state focus) {
+    color: map(plus, color, red)
+  }
+
+  &:hover,
+  .mod(state hover) {
+    color: map(plus, color, red)
+  }
+
+  .mod(state visited) {
+    color: map(plus, color, blue_light-gray);
+  }
+
+  .mod(focused) {
+    outline: none;
+    box-shadow: inset 0 0 0 1px map(plus, color, yellow);
+  }
+}

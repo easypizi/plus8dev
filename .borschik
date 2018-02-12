@@ -1,0 +1,10 @@
+{
+  "paths" : {
+    "./static": "/"
+  },
+  "freeze_paths": {
+    "node_modules/**"             : ":base64:",
+    "node_modules/**/*.svg"       : ":encodeURIComponent:",
+    "design/fonts/**"             : "static/assets/fonts"
+  }
+}

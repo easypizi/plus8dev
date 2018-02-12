@@ -1,0 +1,46 @@
+/*ШРИФТЫ*/
+@font-face {
+  font-family: 'Geometria';
+  src: url(../../../fonts/Geometria.eot);
+  src: url(../../../fonts/Geometria.eot?#iefix) format('embedded-opentype'),
+       url(../../../fonts/Geometria.woff) format('woff'),
+       url(../../../fonts/Geometria.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: url(../../../fonts/Geometria-Heavy.eot);
+  src: url(../../../fonts/Geometria-Heavy.eot?#iefix) format('embedded-opentype'),
+       url(../../../fonts/Geometria-Heavy.woff) format('woff'),
+       url(../../../fonts/Geometria-Heavy.ttf) format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src: url(../../../fonts/Geometria-Bold.eot);
+  src: url(../../../fonts/Geometria-Bold.eot?#iefix) format('embedded-opentype'),
+       url(../../../fonts/Geometria-Bold.woff) format('woff'),
+       url(../../../fonts/Geometria-Bold.ttf) format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/*------------------------------------------------------------*/
+block(page){
+  .mod(theme plus){
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: 'Geometria' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+

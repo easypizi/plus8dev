@@ -1,0 +1,10 @@
+block(section){
+  width: 100%;
+
+  elem(quarter){
+      display: flex;
+      width: 50%;
+      height: 50%;
+  }
+
+}

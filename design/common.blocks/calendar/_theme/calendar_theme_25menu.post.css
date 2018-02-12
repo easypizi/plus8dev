@@ -1,0 +1,12 @@
+block(calendar).mod(theme plus) {
+  color: rgba(0, 0, 0, .9);
+
+  .elem(arrow).mod(direction left) {
+    background-image: svg-load('base64/arrow_wl.svg')
+  }
+
+  .elem(arrow).mod(direction right) {
+    background-image: svg-load('base64/arrow_wr.svg')
+  }
+}
+

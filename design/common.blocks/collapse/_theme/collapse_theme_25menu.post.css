@@ -1,0 +1,36 @@
+@use postcss-map {
+  basePath: "./theme/";
+  maps: ["fbs-cabinet.yml"]
+}
+
+.block(collapse).mod(theme fbs-cabinet) {
+  background-color: map(fbs-cabinet, color, white);
+  color: map(fbs-cabinet, color, black);
+
+  & + & {
+    border-top: map(fbs-cabinet, color, white) 1px solid
+  }
+
+  .elem(header) {
+    text-transform: uppercase;
+    padding: .75em map(fbs-cabinet, content-padding);
+    box-sizing: border-box;
+    margin: 0;
+    background-color: map(fbs-cabinet, color, grey);
+
+    &:focus {
+      outline-offset: -map(fbs-cabinet, line-1px);
+      outline-width: map(fbs-cabinet, line-1px)
+    }
+
+    &::-webkit-details-marker {
+      display: none
+    }
+  }
+
+  .elem(content) {
+    display: inline-block;
+    width: 100%;
+  }
+
+}

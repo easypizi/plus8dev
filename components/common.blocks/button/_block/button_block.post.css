@@ -1,0 +1,9 @@
+block(button).mod(block) {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  & + & {
+    margin-top: .75rem;
+  }
+}

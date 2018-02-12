@@ -1,0 +1,21 @@
+.select_type_payment {
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  background-color: #3F3F42;
+}
+
+.select_type_payment::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 32px;
+  background-image: svg-load('../../icon/svg/payment-16.svg');
+  visibility: visible!important;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-1px, 0);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}

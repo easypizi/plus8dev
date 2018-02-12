@@ -1,0 +1,16 @@
+block( icon ){
+  .mod(size xl){
+    max-width: 209px;
+    max-height: 147px;
+
+    @media(max-width: 760px){
+      width: 146px !important;
+      height: 103px !important;
+    }
+  }
+
+  .mod(size m){
+    max-width: 40px;
+    max-height: 40px;
+  }
+}

@@ -1,0 +1,87 @@
+block(page-notfound){
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
+   elem(content){
+      flex: 1;
+      max-width: 1250px;
+      margin-bottom: 30px;
+
+      @media (max-width: 760px){
+        margin-top: 50px;
+        width: 100%;
+        padding: 0 12px;
+        box-sizing: border-box;
+      }
+   }
+
+   elem(error){
+     font-size: 10.5vw;
+     color: #F05565;
+     font-weight: bold;
+
+     @media (max-width: 760px){
+       font-size: 52px;
+       margin: 0 auto;
+       width: 90%;
+     }
+
+     elem(text){
+        display: inline;
+        color: #363839;
+        margin-left: 50px;
+
+        @media (max-width: 760px){
+          font-size: 52px;
+          margin-left: 10px;
+        }
+     }
+   }
+
+   elem(text){
+      font-size: 10.5vw;
+      font-weight: bold;
+      max-width: 80%;
+
+      @media (max-width: 760px){
+        font-size: 52px;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+   }
+
+   elem(comeback){
+      margin-top: 50px;
+      background-color: #F05565;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      padding: 5px 15px;
+
+      @media (max-width: 760px){
+        display: block;
+      }
+   }
+
+
+  block(button){
+    elem(text){
+      font-weight: bold;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+    }
+  }
+
+
+}
+
+
+
+@media screen and (min-width: 1280px) {
+  .page-notfound__error,
+  .page-notfound__text {
+     font-size: 156px;
+  }
+}

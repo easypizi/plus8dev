@@ -1,0 +1,41 @@
+block(popup) {
+  font: inherit;
+  line-height: inherit;
+  position: absolute;
+  visibility: hidden;
+  margin: -9999px 0 0 -9999px;
+  background: white;
+  box-sizing: border-box;
+
+  z-index: 9999;
+
+  .mod(size s) {
+    padding: 7px 12px 8px;
+    font-size: 13px
+  }
+
+  .mod(size m) {
+    padding: 10px 14px 11px;
+    font-size: 16px
+  }
+
+  .mod(size l) {
+    padding: 14px 18px 15px;
+    font-size: 18px
+  }
+
+  .mod(size xl) {
+    padding: 18px 22px;
+    font-size: 20px
+  }
+
+  .mod(visible) {
+    visibility: visible;
+    margin: 0
+  }
+
+  .mod(invalid) {
+    background: rgba(248, 96, 101, .95);
+    color: rgba(255, 255, 255, .9)
+  }
+}

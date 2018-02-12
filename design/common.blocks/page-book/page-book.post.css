@@ -1,0 +1,94 @@
+block(page-book){
+
+  block(paragraph){
+    font-size: 14px;
+    margin-left: 150px;
+    max-width: 568px;
+    text-transform: uppercase;
+
+    @media(max-width: 760px){
+      margin-left: 0;
+      padding: 0 32px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 70px;
+    }
+  }
+
+  block(header){
+    position: static;
+  }
+
+  elem(title){
+    display: none;
+
+    @media(max-width: 760px){
+      font-size: 27px;
+      display: block;
+      text-transform: uppercase;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      width: 100%;
+      padding: 0 32px;
+      box-sizing: border-box;
+    }
+  }
+
+  block(card){
+    width: 558px;
+    height: 342px;
+    border-radius: 34px;
+    padding: 59px 42px 30px;
+    box-sizing: border-box;
+    background-image: svg-load('img/cardbg.svg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    box-shadow: 0 20px 30px 0 rgba(177, 0, 255, 0.4);
+    margin-left: 150px;
+    margin-top: 108px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    block(title){
+      color: #fff;
+      font-size: 52px;
+      margin-bottom: 11px;
+      text-transform: uppercase;
+    }
+
+    block(text){
+      width: 350px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    block(button){
+      display: block;
+      width: 350px;
+      background-color: #fff;
+      border-radius: 40px 40px 40px 40px;
+      padding: 21px 0;
+      text-align: center;
+      box-sizing: border-box;
+      margin-top: 35px;
+
+      elem(text){
+        font-size: 27px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+  }
+
+}
+
+
+a{
+  text-decoration: none;
+}
+

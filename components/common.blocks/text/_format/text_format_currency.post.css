@@ -1,0 +1,23 @@
+/* https://ru.wikipedia.org/wiki/ISO_4217 */
+/* https://ru.wikipedia.org/wiki/Знаки_валют */
+
+block(text).mod(format currency) {
+  &:before,
+  &:after {
+    color: map(fbs-cabinet, color, bermuda_light)
+  }
+
+  &[data-currency]:after {
+    content: '\00a0' attr(data-currency)
+  }
+
+  &[data-currency-symbol="$"] {
+    &:before {
+      content: attr(data-currency-symbol)
+    }
+
+    &:after {
+      content: none
+    }
+  }
+}

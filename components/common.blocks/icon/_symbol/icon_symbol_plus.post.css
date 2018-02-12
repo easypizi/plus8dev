@@ -1,0 +1,10 @@
+block(icon){
+  &.mod(symbol plus){
+    background-image: svg-load('../svg/plus.svg');
+    width: 100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

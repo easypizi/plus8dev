@@ -1,0 +1,9 @@
+block(icon){
+  .mod(symbol back){
+    background-image: svg-load('../svg/icon_symbol_back.svg');
+    width: 13px;
+    height: 20px;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+}

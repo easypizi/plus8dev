@@ -1,0 +1,9 @@
+
+block(font) {
+  &.mod(family bold){
+    font-weight: bold;
+    font-family: 'Geometria' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

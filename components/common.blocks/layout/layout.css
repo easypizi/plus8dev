@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+}
+
+.layout__content {
+  flex: 1;
+}
+
+
+.layout_hide {
+  display: none;
+}

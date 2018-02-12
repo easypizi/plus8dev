@@ -1,0 +1,13 @@
+block(select) {
+  /* all: initial */
+  display: inline-block;
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+  user-select: none;
+  position: relative;
+}
+
+
+
+
