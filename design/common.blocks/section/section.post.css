@@ -4,7 +4,9 @@ block(section){
   elem(quarter){
       display: flex;
       width: 50%;
-      height: 50%;
+      /*height: 50%;*/
+      /*flex: 1;*/
+      height: 50px;
   }
 
 }

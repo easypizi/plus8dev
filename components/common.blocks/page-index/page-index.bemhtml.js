@@ -43,9 +43,13 @@ block('page-index').content()(function() {
       content: [
         // {
         //   block: 'wave',
-        //   mods: {
-        //     position: 'first'
+        //   attrs: {
+        //     id: 'canvas'
         //   }
+
+        //   // mods: {
+        //   //   position: 'first'
+        //   // }
         // },
         {
           block: 'screen',
@@ -108,7 +112,8 @@ block('page-index').content()(function() {
               content: [
               {
                 elem: 'quarter',
-                content: {
+                content: [
+                {
                   block: 'link',
                   js: { url: '/clients'  },
                   mix: [
@@ -116,11 +121,25 @@ block('page-index').content()(function() {
                   ],
                   url: '/clients',
                   content: 'Clients '
+                },
+                {
+                  elem: 'holder',
+                  content: [
+                    {
+                      block: 'circle'
+                    },
+                    {
+                      block: 'circle',
+                      mix: { block: 'link', elem: 'underline' }
+                    }
+                  ]
                 }
+                ]
               },
               {
                 elem: 'quarter',
-                content:{
+                content:[
+                {
                   block: 'link',
                   js: { url: '/team'  },
                   mix: [
@@ -128,11 +147,25 @@ block('page-index').content()(function() {
                   ],
                   url: '/team',
                   content: 'Us '
+                },
+                {
+                  elem: 'holder',
+                  content: [
+                    {
+                      block: 'circle'
+                    },
+                    {
+                      block: 'circle',
+                      mix: { block: 'link', elem: 'underline' }
+                    }
+                  ]
                 }
+                ]
               },
               {
                 elem: 'quarter',
-                content:{
+                content:[
+                {
                   block: 'link',
                   js: { url: '/portfolio'  },
                   mix: [
@@ -140,7 +173,20 @@ block('page-index').content()(function() {
                   ],
                   url: '/portfolio',
                   content: 'Users '
+                },
+                {
+                  elem: 'holder',
+                  content: [
+                    {
+                      block: 'circle'
+                    },
+                    {
+                      block: 'circle',
+                      mix: { block: 'link', elem: 'underline' }
+                    }
+                  ]
                 }
+                ]
               },
               {
                 elem: 'quarter',
