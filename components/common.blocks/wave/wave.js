@@ -10,6 +10,7 @@ provide(bemDom.declBlock(this.name, {
             inited: function() {
 
 
+
                 loader('https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js', function(){
 
                     var canvas = document.getElementById("canvas");
@@ -32,31 +33,33 @@ provide(bemDom.declBlock(this.name, {
                     gradient2.addColorStop(1, '#FF0000');
 
                     var wave1 = createWave(context, {
-                      amplitude: 76,
-                      duration: 2,
+                      amplitude: 50,
+                      duration: 4,
                       fillStyle: gradient1,
-                      frequency: 3.7,
+                      frequency: 2.5,
                       width: vw,
-                      height: vh,
-                      segments: 1000,
-                      waveHeight: vh * 0.45
+                      height: vh * 2,
+                      segments: 100,
+                      waveHeight: vh * 0.10,
+                      opacity: 0.5
                     });
 
                     var wave2 = createWave(context, {
                       amplitude: 100,
                       duration: 2,
                       fillStyle: gradient2,
-                      frequency: 2.5,
+                      frequency: 1.5,
                       width: vw,
                       height: vh,
-                      segments: 75,
-                      waveHeight: vh * 0.25
+                      segments: 100,
+                      waveHeight: vh * 0.10,
+                      opacity: 1
                     });
 
                     waves.push(wave1, wave2);
 
-                    TweenMax.to(waves, 20, {
-                      waveHeight: vh / 2,
+                    TweenMax.to(waves, 10, {
+                      waveHeight: vh * 0.25,
                       ease: Sine.easeInOut,
                       repeat: -1,
                       repeatDelay: 1,
@@ -64,7 +67,7 @@ provide(bemDom.declBlock(this.name, {
                     });
 
                     TweenMax.to(wave1, 6, {
-                      amplitude: 20,
+                      amplitude: 10,
                       ease: Sine.easeInOut,
                       repeat: -1,
                       yoyo: true
@@ -122,6 +125,7 @@ provide(bemDom.declBlock(this.name, {
                         frequency: options.frequency || 4,
                         height: options.height || 600,
                         points: [],
+                        opacity: options.opacity || 1,
                         segments: options.segments || 100,
                         tweens: [],
                         waveHeight: options.waveHeight || 300,
@@ -163,7 +167,7 @@ provide(bemDom.declBlock(this.name, {
                           var norm = i / segments;
                           var point = {
                             x: wave.x + i * interval,
-                            y: wave.x + i * interval
+                            y: 1
                           };
 
                           var tween = TweenMax.to(point, wave.duration, {
@@ -198,8 +202,8 @@ provide(bemDom.declBlock(this.name, {
                         context.lineTo(wave.x + wave.width, wave.y + wave.height);
                         context.lineTo(wave.x, wave.y + wave.height);
                         context.closePath();
-
                         context.fillStyle = wave.fillStyle;
+                        context.opacity = wave.opacity;
                         context.fill();
                       }
 

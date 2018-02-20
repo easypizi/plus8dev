@@ -36,21 +36,17 @@ block('page-index').content()(function() {
           },
           ]
         },
+        {
+          block: 'wave',
+          attrs: {
+            id: 'canvas'
+          }
+        }
       ]
     },
     {
       elem: 'background',
       content: [
-        // {
-        //   block: 'wave',
-        //   attrs: {
-        //     id: 'canvas'
-        //   }
-
-        //   // mods: {
-        //   //   position: 'first'
-        //   // }
-        // },
         {
           block: 'screen',
           mix: { block: 'page-index', elem: 'midscreen' },

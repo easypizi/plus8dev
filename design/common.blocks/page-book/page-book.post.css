@@ -51,11 +51,24 @@ block(page-book){
     flex-direction: column;
     align-items: flex-start;
 
+    @media(max-width: 768px){
+      width: 259px;
+      height: 159px;
+      margin: 39px auto 0;
+      border-radius: 17px;
+      padding: 17px 22px;
+    }
+
     block(title){
       color: #fff;
       font-size: 52px;
       margin-bottom: 11px;
       text-transform: uppercase;
+
+      @media(max-width: 768px){
+        font-size: 26px;
+        margin-bottom: 2px;
+      }
     }
 
     block(text){
@@ -63,6 +76,11 @@ block(page-book){
       font-size: 14px;
       text-transform: uppercase;
       color: #fff;
+
+      @media(max-width: 768px){
+        font-size: 11px;
+        width: 217px;
+      }
     }
 
     block(button){
@@ -75,11 +93,26 @@ block(page-book){
       box-sizing: border-box;
       margin-top: 35px;
 
+      @media(max-width: 768px){
+        width: 175px;
+        padding: 6px 0;
+        margin-top: 13px;
+      }
+
       elem(text){
         font-size: 27px;
         text-transform: uppercase;
         font-weight: bold;
         text-decoration: none;
+        background: -webkit-linear-gradient(58deg, rgb(255, 0, 241), rgb(255, 0, 93));
+        background: -o-linear-gradient(58deg, rgb(255, 0, 241), rgb(255, 0, 93));
+        background: linear-gradient(148deg, rgb(255, 0, 241), rgb(255, 0, 93));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @media(max-width: 768px){
+          font-size: 13px;
+        }
       }
     }
 

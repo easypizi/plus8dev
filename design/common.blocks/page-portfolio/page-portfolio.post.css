@@ -44,19 +44,6 @@ block(page-portfolio){
             overflow: hidden;
           }
 
-          block(image){
-            display: none;
-
-            @media(max-width: 760px){
-              display: block;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              mix-blend-mode: lighten;
-            }
-          }
-
 
           block(link){
             font-size: 107px;
@@ -65,7 +52,10 @@ block(page-portfolio){
 
             @media(max-width: 760px){
               font-size: 63px;
-              background-blend-mode: lighten;
+              background: -webkit-linear-gradient(40deg, rgb(237, 22, 135), rgb(107, 107, 107));
+              background: linear-gradient(40deg, rgb(237, 22, 135), rgb(107, 107, 107));
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
             }
 
           }

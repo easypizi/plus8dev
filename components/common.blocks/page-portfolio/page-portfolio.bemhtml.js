@@ -27,10 +27,6 @@ block('page-portfolio').content()(function() {
               target: '_blank',
               url: '/',
               content: 'Dribbble'
-            },
-            {
-              block: 'image',
-              url: 'http://babeholder.pixoil.com/img/257/'
             }
             ]
           },
@@ -51,10 +47,6 @@ block('page-portfolio').content()(function() {
               target: '_blank',
               url: '#',
               content: 'Behance'
-            },
-            {
-              block: 'image',
-              url: 'http://babeholder.pixoil.com/img/257/'
             }
             ]
           }
