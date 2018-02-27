@@ -35,7 +35,7 @@
       block: 'wave',
       mods: {
         // canvas: true,
-        morphing: true,
+        // morphing: true,
         main: true
       }
     }

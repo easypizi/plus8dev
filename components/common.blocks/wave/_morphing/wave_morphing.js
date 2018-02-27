@@ -4,7 +4,7 @@ provide(Wave.declMod({ modName: 'morphing', modVal: true }, {
     onSetMod: {
         js: {
             inited: function() {
-                
+
             }
         }
     }

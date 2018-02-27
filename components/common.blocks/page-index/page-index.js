@@ -8,6 +8,7 @@ provide(bemDom.declBlock(this.name, {
     onSetMod: {
         js: {
             inited: function() {
+
                 let cross = this.findChildElem('cross');
                 let screenHeight = window.innerHeight;
                 let stateChecker = 0;
