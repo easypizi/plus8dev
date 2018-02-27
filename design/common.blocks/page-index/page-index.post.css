@@ -22,17 +22,18 @@ block(page-index){
     }
   }
 
-  block(wave){
-    display: none;
-    z-index: -1;
+  block(screen){
+    position: relative;
 
-    &.mod(show){
-        -webkit-animation: bounce-in-bottom 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) forwards;
-                animation: bounce-in-bottom 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) forwards;
-                display: block;
+    elem(wave-container){
+      width: 100%;
+      height: 800px;
+      position: absolute;
+      bottom: 0;
+      overflow: hidden;
+      border: 2px solid red;
     }
   }
-
   elem(content){
     position: relative;
   }

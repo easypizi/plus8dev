@@ -37,10 +37,15 @@ block('page-index').content()(function() {
           ]
         },
         {
-          block: 'wave',
-          attrs: {
-            id: 'canvas'
+          elem: 'wave-container',
+          content: [
+          {
+            block: 'wave',
+            mods: {
+              main: true
+            }
           }
+          ]
         }
       ]
     },
