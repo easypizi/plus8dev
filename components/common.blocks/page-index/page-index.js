@@ -32,7 +32,7 @@ provide(bemDom.declBlock(this.name, {
                   })
                 })
 
-                // var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+                var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
                 // if (scrolled > 500){
                 //   waves.setMod('show')
@@ -40,65 +40,65 @@ provide(bemDom.declBlock(this.name, {
 
 
 
-                // window.onscroll = function(event) {
-                //   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-                //   let downSection = _this.findChildElem('bottomscreen');
+                window.onscroll = function(event) {
+                  var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+                  let downSection = _this.findChildElem('bottomscreen');
 
-                //   if (window.innerWidth > 480){
-                //     if(scrolled > (screenHeight - 50)){
-                //       // _this.findChildBlock(Header).setMod('white');
-                //     } else if (scrolled < (screenHeight)) {
-                //       // _this.findChildBlock(Header).delMod('white')
-                //       _this.findChildBlock(Footer).delMod('white');
-                //     } else if (scrolled > screenHeight) {
-                //       _this.findChildBlock(Footer).setMod('white');
-                //     }
-                //   }
+                  if (window.innerWidth > 480){
+                    if(scrolled > (screenHeight - 50)){
+                      _this.findChildBlock(Header).setMod('white');
+                    } else if (scrolled < (screenHeight)) {
+                      _this.findChildBlock(Header).delMod('white')
+                      _this.findChildBlock(Footer).delMod('white');
+                    } else if (scrolled > screenHeight) {
+                      _this.findChildBlock(Footer).setMod('white');
+                    }
+                  }
 
-                //   waves.setMod('show');
-                //   if(waves.hasMod('show')){
-                //     _this.findChildElem('slogan').setMod('to-white');
-                //   }
+                  // waves.setMod('show');
+                  // if(waves.hasMod('show')){
+                  //   _this.findChildElem('slogan').setMod('to-white');
+                  // }
 
-                //   if (scrolled > (screenHeight) && stateChecker === 0){
-                //     cross.setMod('move', 'in');
-                //     benefits.map( item => {
-                //       if(!item.hasMod('hide')){
-                //         item.setMod('hide')
-                //       }
-                //     })
+                  if (scrolled > (screenHeight) && stateChecker === 0){
+                    cross.setMod('move', 'in');
+                    benefits.map( item => {
+                      if(!item.hasMod('hide')){
+                        item.setMod('hide')
+                      }
+                    })
 
-                //     if(!downSection.hasMod('fixed')){
-                //       downSection.setMod('fixed');
-                //     }
+                    if(!downSection.hasMod('fixed')){
+                      downSection.setMod('fixed');
+                    }
 
-                //     cross._domEvents().on('animationend', ()=>{
-                //       _this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
-                //     })
-                //     stateChecker = 1;
+                    cross._domEvents().on('animationend', ()=>{
+                      _this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
+                    })
+                    stateChecker = 1;
 
-                //   } else if (scrolled < screenHeight && stateChecker === 1){
-                //     cross.setMod('move', 'out');
-                //     if(downSection.hasMod('fixed')){
-                //       downSection.delMod('fixed');
-                //     }
+                  } else if (scrolled < screenHeight && stateChecker === 1){
+                    cross.setMod('move', 'out');
+                    if(downSection.hasMod('fixed')){
+                      downSection.delMod('fixed');
+                    }
 
 
-                //     cross._domEvents().on('animationend', ()=>{
+                    cross._domEvents().on('animationend', ()=>{
 
-                //       if(!downSection.hasMod('fixed')){
-                //         _this.findChildElem('bottomscreen').findChildBlock(section).setMod('hide');
-                //         benefits.map( item => {
-                //           if(item.hasMod('hide')){
-                //             item.delMod('hide')
-                //           }
-                //         })
-                //       }
-                //     })
+                      if(!downSection.hasMod('fixed')){
+                        _this.findChildElem('bottomscreen').findChildBlock(section).setMod('hide');
+                        benefits.map( item => {
+                          if(item.hasMod('hide')){
+                            item.delMod('hide')
+                          }
+                        })
+                      }
+                    })
 
-                //     stateChecker = 0;
-                //   }
-                // }
+                    stateChecker = 0;
+                  }
+                }
 
 
             }

@@ -1,26 +1,28 @@
 block(wave){
+  position: relative;
+  width: 100vw;
+
   &.mod(main){
     block(image){
-      width: 120%;
+      width: 104vw;
       position: absolute;
-      left: -200px;
+      /*left: -200px;*/
       z-index: -1;
-      height: 500px;
+      /*height: 500px;*/
+      display: block;
 
-      &.mod(second){
+/*      &.mod(second){
         bottom: 0;
         left: 0;
         z-index: -2;
         position: absolute;
         display: block;
         height: 400px;
-      }
+      }*/
     }
   }
 }
 
-/*.wave .image svg {
-  width: 400px;
-  height: 400px;
-  transform-origin: unset;
-}*/
+.wave .image svg {
+  height: 100%;
+}

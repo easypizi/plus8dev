@@ -36,17 +36,18 @@ block('page-index').content()(function() {
           },
           ]
         },
-        {
-          elem: 'wave-container',
-          content: [
-          {
-            block: 'wave',
-            mods: {
-              main: true
-            }
-          }
-          ]
-        }
+        // подрубить в последний момент
+        // {
+        //   elem: 'wave-container',
+        //   content: [
+        //   {
+        //     block: 'wave',
+        //     mods: {
+        //       main: true
+        //     }
+        //   }
+        //   ]
+        // }
       ]
     },
     {
@@ -54,6 +55,7 @@ block('page-index').content()(function() {
       content: [
         {
           block: 'screen',
+          attrs: {id: 'benefits'},
           mix: { block: 'page-index', elem: 'midscreen' },
           mods: { fullscreen: true },
           content: [
@@ -100,6 +102,7 @@ block('page-index').content()(function() {
         },
         {
           block: 'screen',
+          attrs: {id: 'menu'},
           mix: { block: 'page-index', elem: 'bottomscreen' },
           mods: {
              fullscreen: true,

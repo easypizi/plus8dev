@@ -32,21 +32,21 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                             morphIndex: 20
                         })
 
-                        var fillTheWaveTwo = KUTE.fromTo('#third',
-                        { path: '#third' },
-                        { path: '#forth' },
-                        {
-                            duration: 7000,
-                            repeat: 100000000,
-                            yoyo: true,
-                            easing: 'linear',
-                            easing: 'easingCubicInOut',
-                            morphPrecision: 1,
-                            morphIndex: 20
-                        })
+                        // var fillTheWaveTwo = KUTE.fromTo('#third',
+                        // { path: '#third' },
+                        // { path: '#forth' },
+                        // {
+                        //     duration: 7000,
+                        //     repeat: 100000000,
+                        //     yoyo: true,
+                        //     easing: 'linear',
+                        //     easing: 'easingCubicInOut',
+                        //     morphPrecision: 1,
+                        //     morphIndex: 20
+                        // })
 
                         fillTheWaveOne.start()
-                        fillTheWaveTwo.start()
+                        // fillTheWaveTwo.start()
                     })
                   })
                 })
