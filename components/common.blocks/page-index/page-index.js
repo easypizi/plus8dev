@@ -5,13 +5,45 @@ modules.define('page-index',
 function(provide, bemDom, BEMHTML, section, Link, Header, Footer, Wave) {
 
 provide(bemDom.declBlock(this.name, {
+
+    beforeSetMod: {
+        js: {
+            inited: function() {
+              if(this.findChildElem('cross').hasMod('downsize', 'show')){
+                  window.location.hash = 'bottom';
+                  this.findChildElem('cross').delMod('move-in');
+                  this.findChildBlock(Header).setMod('white');
+                   let downSection = this.findChildElem('bottomscreen');
+                  downSection.setMod('fixed')
+                  this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
+                  let benefits = this.findChildElems('benefits');
+                  benefits.map( item => {
+                    if(!item.hasMod('hide')){
+                      item.setMod('hide')
+                    }
+                  })
+                  localStorage.setItem('stateChecker', 1);
+              } else {
+                localStorage.setItem('stateChecker', 0);
+              }
+
+
+            }
+        }
+    },
+
     onSetMod: {
         js: {
             inited: function() {
 
                 let cross = this.findChildElem('cross');
                 let screenHeight = window.innerHeight;
-                let stateChecker = 0;
+
+                let stateChecker = '0';
+                if(localStorage.getItem('stateChecker')){
+                  stateChecker = localStorage.getItem('stateChecker');
+                }
+
                 let benefits = this.findChildElems('benefits');
                 let _this = this;
                 let links = this.findChildElem('bottomscreen').findChildBlock(section).findChildElems('quarter');
@@ -21,6 +53,7 @@ provide(bemDom.declBlock(this.name, {
                 links.map( item => {
                   let currentLink = item.findChildBlock(Link);
                   currentLink._domEvents().on('click', (event)=>{
+                    cross.delMod('downsize', 'show');
                     cross.setMod('oversize');
                     if (event.ctrlKey || event.metaKey ) {
                       return
@@ -37,7 +70,6 @@ provide(bemDom.declBlock(this.name, {
                 // if (scrolled > 500){
                 //   waves.setMod('show')
                 // }
-
 
 
                 window.onscroll = function(event) {
@@ -60,7 +92,7 @@ provide(bemDom.declBlock(this.name, {
                   //   _this.findChildElem('slogan').setMod('to-white');
                   // }
 
-                  if (scrolled > (screenHeight) && stateChecker === 0){
+                  if (scrolled > (screenHeight) && stateChecker === '0'){
                     cross.setMod('move', 'in');
                     benefits.map( item => {
                       if(!item.hasMod('hide')){
@@ -73,11 +105,13 @@ provide(bemDom.declBlock(this.name, {
                     }
 
                     cross._domEvents().on('animationend', ()=>{
+                      history.pushState(null, null, '/')
                       _this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
                     })
-                    stateChecker = 1;
+                    stateChecker = '1';
 
-                  } else if (scrolled < screenHeight && stateChecker === 1){
+                  } else if (scrolled < (screenHeight - 200) && stateChecker === '1'){
+                    cross.delMod('downsize', 'show')
                     cross.setMod('move', 'out');
                     if(downSection.hasMod('fixed')){
                       downSection.delMod('fixed');
@@ -85,7 +119,7 @@ provide(bemDom.declBlock(this.name, {
 
 
                     cross._domEvents().on('animationend', ()=>{
-
+                    history.pushState(null, null, '/')
                       if(!downSection.hasMod('fixed')){
                         _this.findChildElem('bottomscreen').findChildBlock(section).setMod('hide');
                         benefits.map( item => {
@@ -96,7 +130,7 @@ provide(bemDom.declBlock(this.name, {
                       }
                     })
 
-                    stateChecker = 0;
+                    stateChecker = '0';
                   }
                 }
 

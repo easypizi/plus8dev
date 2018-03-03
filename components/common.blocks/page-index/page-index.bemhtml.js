@@ -52,6 +52,7 @@ block('page-index').content()(function() {
     },
     {
       elem: 'background',
+      attrs: {id: 'bottom'},
       content: [
         {
           block: 'screen',
@@ -75,7 +76,7 @@ block('page-index').content()(function() {
                 block: 'icon',
                 mix: [
                   { block: 'icon', mods: { size: 'm' } },
-                  { block: 'page-index', elem: 'cross' }
+                  { block: 'page-index', elem: 'cross', elemMods: {downsize: this.ctx.content[0].data} }
                 ],
                 mods: {
                   symbol: 'plus'

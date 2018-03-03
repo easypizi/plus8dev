@@ -58,12 +58,28 @@ const isCallerMobile = req => {
 module.exports = function( app ) {
 
   app.get('/', function(req, res) {
-    render(req, res, {
-      page: 'index',
-      bundle: 'desktop',
-      title: 'PLUS8'
-      })
+      if ( req.query.hasOwnProperty( 'bottom' ) ) {
+        render(req, res, {
+          page: 'index',
+          bundle: 'desktop',
+          title: 'PLUS8',
+          data: {
+            comeback: 'show'
+          }
+          })
+      } else {
+        render(req, res, {
+          page: 'index',
+          bundle: 'desktop',
+          title: 'PLUS8',
+          data: {
+            comeback: 'hide'
+          }
+          })
+      }
   });
+
+
 
   app.get('/portfolio', function(req, res) {
     render(req, res, {

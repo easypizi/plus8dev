@@ -113,7 +113,7 @@ block(page-index){
     align-items: center;
 
     &.mod(fixed){
-      position: fixed;
+      position: absolute;
       top: 0;
     }
 
@@ -263,8 +263,15 @@ block(page-index){
     }
 
     &.mod(oversize){
+    position: fixed;
     -webkit-animation: oversize 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
             animation: oversize 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+    }
+
+    &.mod(downsize show){
+    position: fixed;
+    -webkit-animation: oversize-reverse 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+            animation: oversize-reverse 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
     }
   }
 
@@ -373,3 +380,14 @@ block(page-index){
   }
 }
 
+@keyframes oversize-reverse {
+  0% {
+    -webkit-transform: scale(100);
+            transform: scale(100);
+  }
+
+  100% {
+    -webkit-transform: scale(4.65);
+            transform: scale(4.65);
+  }
+}
