@@ -11,11 +11,11 @@ provide(bemDom.declBlock(this.name, {
             inited: function() {
               if(this.findChildElem('cross').hasMod('downsize', 'show')){
                   window.location.hash = 'bottom';
-                  this.findChildElem('cross').delMod('move-in');
+                  // this.findChildElem('cross').delMod('move-in');
                   this.findChildBlock(Header).setMod('white');
                    let downSection = this.findChildElem('bottomscreen');
                   downSection.setMod('fixed')
-                  this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
+                  this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
                   let benefits = this.findChildElems('benefits');
                   benefits.map( item => {
                     if(!item.hasMod('hide')){
@@ -24,6 +24,7 @@ provide(bemDom.declBlock(this.name, {
                   })
                   localStorage.setItem('stateChecker', 1);
               } else {
+                window.scrollTo(0,0);
                 localStorage.setItem('stateChecker', 0);
               }
 
@@ -44,9 +45,10 @@ provide(bemDom.declBlock(this.name, {
                   stateChecker = localStorage.getItem('stateChecker');
                 }
 
+
                 let benefits = this.findChildElems('benefits');
                 let _this = this;
-                let links = this.findChildElem('bottomscreen').findChildBlock(section).findChildElems('quarter');
+                let links = this.findChildElem('wrapper').findMixedBlock(section).findChildElems('quarter');
                 // let waves = this.findChildBlock(Wave);
 
 
@@ -76,14 +78,16 @@ provide(bemDom.declBlock(this.name, {
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
                   let downSection = _this.findChildElem('bottomscreen');
 
+
+
                   if (window.innerWidth > 480){
                     if(scrolled > (screenHeight - 50)){
                       _this.findChildBlock(Header).setMod('white');
                     } else if (scrolled < (screenHeight)) {
                       _this.findChildBlock(Header).delMod('white')
-                      _this.findChildBlock(Footer).delMod('white');
+                      // _this.findChildBlock(Footer).delMod('white');
                     } else if (scrolled > screenHeight) {
-                      _this.findChildBlock(Footer).setMod('white');
+                      // _this.findChildBlock(Footer).setMod('white');
                     }
                   }
 
@@ -92,36 +96,34 @@ provide(bemDom.declBlock(this.name, {
                   //   _this.findChildElem('slogan').setMod('to-white');
                   // }
 
-                  if (scrolled > (screenHeight) && stateChecker === '0'){
+                  console.log('///////////');
+                  console.log(stateChecker);
+                  console.log('///////////');
+
+                   if (scrolled < (screenHeight * 2) && scrolled > (screenHeight) && stateChecker === '0'){
                     cross.setMod('move', 'in');
                     benefits.map( item => {
                       if(!item.hasMod('hide')){
                         item.setMod('hide')
                       }
                     })
-
                     if(!downSection.hasMod('fixed')){
                       downSection.setMod('fixed');
                     }
-
                     cross._domEvents().on('animationend', ()=>{
                       history.pushState(null, null, '/')
-                      _this.findChildElem('bottomscreen').findChildBlock(section).delMod('hide');
+                      _this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
                     })
-                    stateChecker = '1';
-
-                  } else if (scrolled < (screenHeight - 200) && stateChecker === '1'){
+                  } else if ( scrolled < screenHeight && stateChecker === '1' ){
                     cross.delMod('downsize', 'show')
                     cross.setMod('move', 'out');
                     if(downSection.hasMod('fixed')){
                       downSection.delMod('fixed');
                     }
-
-
                     cross._domEvents().on('animationend', ()=>{
                     history.pushState(null, null, '/')
                       if(!downSection.hasMod('fixed')){
-                        _this.findChildElem('bottomscreen').findChildBlock(section).setMod('hide');
+                        _this.findChildElem('wrapper').findMixedBlock(section).setMod('hide');
                         benefits.map( item => {
                           if(item.hasMod('hide')){
                             item.delMod('hide')
@@ -129,8 +131,9 @@ provide(bemDom.declBlock(this.name, {
                         })
                       }
                     })
-
-                    stateChecker = '0';
+                    stateChecker = '0'
+                  } else if ( scrolled > ((screenHeight * 2) - 200) && stateChecker === '0') {
+                    stateChecker = '1';
                   }
                 }
 

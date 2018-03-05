@@ -52,13 +52,17 @@ block('page-index').content()(function() {
     },
     {
       elem: 'background',
-      attrs: {id: 'bottom'},
       content: [
         {
           block: 'screen',
-          attrs: {id: 'benefits'},
-          mix: { block: 'page-index', elem: 'midscreen' },
-          mods: { fullscreen: true },
+          mods: {
+             fullscreen: true,
+             movable: true
+          },
+          mix: [
+            { block: 'page-index', elem: 'midscreen' },
+            { block: 'page-index', elem: 'bottomscreen' }
+          ],
           content: [
             {
               block: 'section',
@@ -98,18 +102,7 @@ block('page-index').content()(function() {
                 ]
               }
               ]
-            }
-          ]
-        },
-        {
-          block: 'screen',
-          attrs: {id: 'menu'},
-          mix: { block: 'page-index', elem: 'bottomscreen' },
-          mods: {
-             fullscreen: true,
-             movable: true
-          },
-          content: [
+            },
             {
               block: 'section',
               mods: { hide: true },
@@ -206,14 +199,15 @@ block('page-index').content()(function() {
                 }
               }
               ]
+            },
+            {
+              block: 'footer',
+              attrs: { id: 'bottom' }
             }
           ]
         }
       ]
     },
-    {
-      block: 'footer'
-    }
     ]
   }
   ];
