@@ -1,22 +1,27 @@
 block(wave){
   &.mod(bottom){
-    background-image: svg-load('img/wave-bottom.svg');
-    height: 100%;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
-    bottom: 0;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    z-index: -1;
+      width: 112vw;
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+      height: 300px;
+      display: block;
 
-    @media(max-width: 760px){
-      background-image: svg-load('img/mobilesidewave.svg');
-      width: 100%;
-      height: 200px;
-      bottom: -30px;
+    block(image){
+      opacity: 0.8;
+
+      .mod(absolute){
+          position: absolute;
+          display: block;
+          top: -130px;
+          left: -20px;
+      }
     }
+
   }
+}
+
+
+.wave_bottom .image svg {
+  width: 104vw;
 }

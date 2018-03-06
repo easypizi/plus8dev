@@ -4,14 +4,12 @@ modules.define('wave',
 
 function(provide, bemDom, BEMHTML, $, image, loader, Wave) {
 
-provide(Wave.declMod({ modName: 'main', modVal: true }, {
+provide(Wave.declMod({ modName: 'bottom', modVal: true }, {
     onSetMod: {
         js: {
             inited: function() {
                 let _this = this;
 
-
-                // console.log('yo');
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
                     loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){
@@ -23,7 +21,7 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         { path: '#first' },
                         { path: '#second' },
                         {
-                            duration: 10000,
+                            duration: 6000,
                             repeat: 100000000,
                             yoyo: true,
                             easing: 'linear',
@@ -36,7 +34,7 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         { path: '#third' },
                         { path: '#forth' },
                         {
-                            duration: 7000,
+                            duration: 8000,
                             repeat: 100000000,
                             yoyo: true,
                             easing: 'linear',

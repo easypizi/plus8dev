@@ -34,7 +34,6 @@ block(page-index){
       position: absolute;
       bottom: 0;
       overflow: hidden;
-      border: 2px solid red;
     }
   }
 
@@ -48,6 +47,7 @@ block(page-index){
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     block(section){
       height: 200px;

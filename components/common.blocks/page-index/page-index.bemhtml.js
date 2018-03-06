@@ -36,18 +36,17 @@ block('page-index').content()(function() {
           },
           ]
         },
-        // подрубить в последний момент
-        // {
-        //   elem: 'wave-container',
-        //   content: [
-        //   {
-        //     block: 'wave',
-        //     mods: {
-        //       main: true
-        //     }
-        //   }
-        //   ]
-        // }
+        {
+          elem: 'wave-container',
+          content: [
+          {
+            block: 'wave',
+            mods: {
+              main: true
+            }
+          }
+          ]
+        }
       ]
     },
     {
