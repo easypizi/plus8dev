@@ -3,8 +3,4 @@ block(screen){
     height: 100vh;
     width: 100%;
   }
-
-  .mod(movable){
-
-  }
 }

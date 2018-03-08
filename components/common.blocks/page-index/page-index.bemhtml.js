@@ -56,11 +56,10 @@ block('page-index').content()(function() {
           block: 'screen',
           mods: {
              fullscreen: true,
-             movable: true
+             movable: this.ctx.content[0].data
           },
           mix: [
             { block: 'page-index', elem: 'midscreen' },
-            { block: 'page-index', elem: 'bottomscreen' }
           ],
           content: [
             {
@@ -107,7 +106,7 @@ block('page-index').content()(function() {
               mods: { hide: true },
               mix: { block: 'page-index', elem: 'wrapper' },
               content: [
-              {
+                {
                 elem: 'quarter',
                 content: [
                 {
@@ -132,8 +131,8 @@ block('page-index').content()(function() {
                   ]
                 }
                 ]
-              },
-              {
+                },
+                {
                 elem: 'quarter',
                 content:[
                 {
@@ -158,8 +157,8 @@ block('page-index').content()(function() {
                   ]
                 }
                 ]
-              },
-              {
+                },
+                {
                 elem: 'quarter',
                 content:[
                 {
@@ -184,8 +183,8 @@ block('page-index').content()(function() {
                   ]
                 }
                 ]
-              },
-              {
+                },
+                {
                 elem: 'quarter',
                 content: {
                   block: 'link',
@@ -196,14 +195,14 @@ block('page-index').content()(function() {
                   url: '/book',
                   content: 'You '
                 }
-              }
+                }
               ]
             },
-            {
-              block: 'footer',
-              attrs: { id: 'bottom' }
-            }
           ]
+        },
+        {
+          block: 'footer',
+          attrs: { id: 'bottom' }
         }
       ]
     },

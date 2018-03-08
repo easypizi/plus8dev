@@ -28,7 +28,8 @@
     {
       block: 'screen',
       mods: {
-        fullscreen: true
+        fullscreen: true,
+        movable: true
       }
     },
     {
@@ -41,3 +42,4 @@
     }
   ]
 })
+

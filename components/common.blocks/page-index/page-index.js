@@ -1,30 +1,27 @@
 modules.define('page-index',
 
-['i-bem-dom', 'BEMHTML', 'section', 'link', 'header', 'footer', 'wave'],
+['i-bem-dom', 'BEMHTML', 'section', 'link', 'header', 'footer', 'wave', 'screen'],
 
-function(provide, bemDom, BEMHTML, section, Link, Header, Footer, Wave) {
+function(provide, bemDom, BEMHTML, section, Link, Header, Footer, Wave, Screen) {
 
 provide(bemDom.declBlock(this.name, {
 
     beforeSetMod: {
         js: {
             inited: function() {
+              this.cross = this.findChildElem('cross');
+              this.midscreen = this.findChildElem('midscreen').findMixedBlock(Screen);
+              this.benefits = this.findChildElems('benefits');
+
               if(this.findChildElem('cross').hasMod('downsize', 'show')){
                   window.location.hash = 'bottom';
-                  // this.findChildElem('cross').delMod('move-in');
                   this.findChildBlock(Header).setMod('white');
-                   let downSection = this.findChildElem('bottomscreen');
-                  downSection.setMod('fixed')
                   this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
-                  let benefits = this.findChildElems('benefits');
-                  benefits.map( item => {
-                    if(!item.hasMod('hide')){
-                      item.setMod('hide')
-                    }
-                  })
+                  this._showLinks()
                   localStorage.setItem('stateChecker', 1);
               } else {
                 window.scrollTo(0,0);
+                this._hideLinks();
                 localStorage.setItem('stateChecker', 0);
               }
 
@@ -36,110 +33,130 @@ provide(bemDom.declBlock(this.name, {
     onSetMod: {
         js: {
             inited: function() {
-
-                let cross = this.findChildElem('cross');
+                let _this = this;
+                this.cross = this.findChildElem('cross');
                 let screenHeight = window.innerHeight;
+                this.benefits = this.findChildElems('benefits');
+                this.links = this.findChildElem('wrapper').findMixedBlock(section).findChildElems('quarter');
+                this.stateChecker = '0';
+                let globalmarker = window.pageYOffset || document.documentElement.scrollTop;
+                this.midscreen = _this.findChildElem('midscreen').findMixedBlock(Screen);
+                this.debouncer = '0';
 
-                let stateChecker = '0';
+                console.log();
+
                 if(localStorage.getItem('stateChecker')){
-                  stateChecker = localStorage.getItem('stateChecker');
+                  this.stateChecker = localStorage.getItem('stateChecker');
                 }
 
-
-                let benefits = this.findChildElems('benefits');
-                let _this = this;
-                let links = this.findChildElem('wrapper').findMixedBlock(section).findChildElems('quarter');
-                // let waves = this.findChildBlock(Wave);
-
-
-                links.map( item => {
+                this.links.map( item => {
                   let currentLink = item.findChildBlock(Link);
                   currentLink._domEvents().on('click', (event)=>{
-                    cross.delMod('downsize', 'show');
-                    cross.setMod('oversize');
+                    this.cross.delMod('downsize', 'show');
+                    this.cross.setMod('oversize');
                     if (event.ctrlKey || event.metaKey ) {
                       return
                     }
                     event.preventDefault();
-                    cross._domEvents().on('animationend', ()=>{
+                    this.cross._domEvents().on('animationend', ()=>{
                       window.location.href = currentLink.params.url;
                     })
                   })
                 })
 
-                var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-
+                // let waves = this.findChildBlock(Wave);
                 // if (scrolled > 500){
                 //   waves.setMod('show')
                 // }
 
+                this._events().on('show', () => {
+                  if (this.debouncer === '1'){
+                    console.log('yo');
+                    this._showLinks();
+                  }
+                })
+
+                this._events().on('hide', () => {
+                  if (this.debouncer === '1'){
+                    this._hideLinks();
+                  }
+                })
+
 
                 window.onscroll = function(event) {
+
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-                  let downSection = _this.findChildElem('bottomscreen');
 
-
-
+                  // Изменение стилей Хэдера
                   if (window.innerWidth > 480){
                     if(scrolled > (screenHeight - 50)){
                       _this.findChildBlock(Header).setMod('white');
                     } else if (scrolled < (screenHeight)) {
                       _this.findChildBlock(Header).delMod('white')
-                      // _this.findChildBlock(Footer).delMod('white');
-                    } else if (scrolled > screenHeight) {
-                      // _this.findChildBlock(Footer).setMod('white');
+                      history.pushState(null, null, '/');
                     }
                   }
+
 
                   // waves.setMod('show');
                   // if(waves.hasMod('show')){
                   //   _this.findChildElem('slogan').setMod('to-white');
                   // }
 
-                  console.log('///////////');
-                  console.log(stateChecker);
-                  console.log('///////////');
-
-                   if (scrolled < (screenHeight * 2) && scrolled > (screenHeight) && stateChecker === '0'){
-                    cross.setMod('move', 'in');
-                    benefits.map( item => {
-                      if(!item.hasMod('hide')){
-                        item.setMod('hide')
-                      }
-                    })
-                    if(!downSection.hasMod('fixed')){
-                      downSection.setMod('fixed');
-                    }
-                    cross._domEvents().on('animationend', ()=>{
-                      history.pushState(null, null, '/')
-                      _this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
-                    })
-                  } else if ( scrolled < screenHeight && stateChecker === '1' ){
-                    cross.delMod('downsize', 'show')
-                    cross.setMod('move', 'out');
-                    if(downSection.hasMod('fixed')){
-                      downSection.delMod('fixed');
-                    }
-                    cross._domEvents().on('animationend', ()=>{
-                    history.pushState(null, null, '/')
-                      if(!downSection.hasMod('fixed')){
-                        _this.findChildElem('wrapper').findMixedBlock(section).setMod('hide');
-                        benefits.map( item => {
-                          if(item.hasMod('hide')){
-                            item.delMod('hide')
-                          }
-                        })
-                      }
-                    })
-                    stateChecker = '0'
-                  } else if ( scrolled > ((screenHeight * 2) - 200) && stateChecker === '0') {
-                    stateChecker = '1';
+                  if ( scrolled - globalmarker > 0 && scrolled > screenHeight && _this.stateChecker === '0' ){
+                      _this.debouncer = '1';
+                      _this._emit('show');
+                  } else if (scrolled - globalmarker < 0 && scrolled < (screenHeight) && _this.stateChecker === '1') {
+                      _this.debouncer = '1';
+                    _this._emit('hide');
                   }
+                    globalmarker = scrolled;
+
                 }
-
-
             }
         }
+    },
+
+    _showLinks: function() {
+
+      this.cross.setMod('move', 'in');
+      this.benefits.map( item => {
+        if(!item.hasMod('hide')){
+          item.setMod('hide')
+        }
+      })
+
+      if(!this.midscreen.hasMod('movable', 'show')){
+        this.midscreen.setMod('movable', 'show');
+      }
+
+      this._domEvents().on('animationend', () => {
+        this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
+        this.stateChecker = '1';
+      })
+        this.debouncer = '0';
+    },
+
+    _hideLinks: function() {
+      if (this.cross.hasMod('downsize', 'show')){
+        this.cross.delMod('downsize', 'show')
+      }
+      this.cross.setMod('move', 'out');
+      if(this.midscreen.hasMod('movable', 'show')){
+        this.midscreen.delMod('movable', 'show');
+      }
+      this._domEvents().on('animationend', ()=>{
+        if(!this.midscreen.hasMod('movable', 'show')){
+          this.findChildElem('wrapper').findMixedBlock(section).setMod('hide');
+          this.benefits.map( item => {
+            if(item.hasMod('hide')){
+              item.delMod('hide')
+            }
+          })
+        }
+        this.stateChecker = '0'
+      })
+        this.debouncer = '0';
     }
 }));
 
