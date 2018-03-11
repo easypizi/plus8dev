@@ -11,11 +11,6 @@ provide(bemDom.declBlock(this.name, {
                this.scrollArea = this.domElem[0].scrollWidth - this.domElem[0].offsetWidth;
                this._goSlideLeft();
 
-               console.log('//////////');
-               console.log(this.scrollArea);
-               console.log('//////////');
-
-
                // Будем превентить функцию по скроллу и запускать после.
                this._domEvents().on('scroll', (event)=> {
 
@@ -43,7 +38,6 @@ provide(bemDom.declBlock(this.name, {
     },
 
     _checkDirection: function(length){
-      console.log(this.integer);
       if(this.integer === length){
        this.direction = 'left';
        clearInterval(this.timerPlus);
