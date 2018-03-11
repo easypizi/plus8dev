@@ -17,11 +17,15 @@ block('wave').mod('main', true).content()(function() {
           second: true
         },
         content: {
-          html: '<svg viewBox="0 0 1478 622" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="74.5930699%" y1="7.88557599%" x2="48.2419658%" y2="81.1057954%" id="a"><stop stop-color="#FF005D" offset="0%"/><stop stop-color="#FF00F1" offset="100%"/></linearGradient></defs><path id="third" d="M0 185.281917c269.788989 0 410.788989 219 578.788989 219s269-144 455.000001-311.9999999c186-168 419-59 444.21101-40V621.167914H0V185.281917z" fill="url(#a)" fill-rule="evenodd" opacity=".69999999"/><path id="forth" visibility="hidden" d="M0 431C0 146 81 58 260 107s453 372 639 204S1127-11 1478 1.28191711V570.167914H0V431z" fill="url(#a)" fill-rule="evenodd" opacity=".69999999"/></svg>'
+          html: '<svg viewBox="0 0 1478 571" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="74.5930699%" y1="7.88557599%" x2="48.2419658%" y2="81.1057954%" id="a"><stop stop-color="#FF005D" offset="0%"/><stop stop-color="#FF00F1" offset="100%"/></linearGradient></defs><path id="third" d="M0 134.281917C104 242 144 329 312 329S681-40.4102416 963 143c282 183.410242 489.78899-160.7180829 515-141.71808289V570.167914H0V134.281917z" fill="url(#a)" fill-rule="evenodd" opacity=".69999999"/><path id="forth" visibility="hidden" d="M0 134.281917C174 28 224 407 539 393s293-376 595-258.718083c302 117.281917 318.78899-151.9999999 344-132.99999989V570.167914H0V134.281917z" fill="url(#a)" fill-rule="evenodd" opacity=".69999999"/></svg>'
         }
       },
     ]
 });
+
+
+
+
 
 
 

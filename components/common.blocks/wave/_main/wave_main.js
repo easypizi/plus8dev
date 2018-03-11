@@ -23,26 +23,26 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         { path: '#first' },
                         { path: '#second' },
                         {
-                            duration: 10000,
-                            repeat: 100000000,
+                            duration: 11500,
+                            repeat: 999,
                             yoyo: true,
                             easing: 'linear',
                             easing: 'easingCubicInOut',
                             morphPrecision: 1,
-                            morphIndex: 20
+                            morphIndex: 40
                         })
 
                         var fillTheWaveTwo = KUTE.fromTo('#third',
                         { path: '#third' },
                         { path: '#forth' },
                         {
-                            duration: 7000,
-                            repeat: 100000000,
+                            duration: 9300,
+                            repeat: 999,
                             yoyo: true,
                             easing: 'linear',
                             easing: 'easingCubicInOut',
                             morphPrecision: 1,
-                            morphIndex: 20
+                            morphIndex: 40
                         })
 
                         fillTheWaveOne.start()
