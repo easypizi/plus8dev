@@ -10,8 +10,6 @@ provide(Wave.declMod({ modName: 'side', modVal: true }, {
             inited: function() {
                 let _this = this;
 
-
-                // console.log('yo');
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
                     loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){
@@ -24,12 +22,12 @@ provide(Wave.declMod({ modName: 'side', modVal: true }, {
                         { path: '#second' },
                         {
                             duration: 5000,
-                            repeat: 100000000,
+                            repeat: 999,
                             yoyo: true,
                             easing: 'linear',
                             easing: 'easingCubicInOut',
                             morphPrecision: 1,
-                            morphIndex: 20
+                            morphIndex: 8
                         })
 
                         var fillTheWaveTwo = KUTE.fromTo('#forth',
@@ -37,12 +35,12 @@ provide(Wave.declMod({ modName: 'side', modVal: true }, {
                         { path: '#third' },
                         {
                             duration: 6000,
-                            repeat: 100000000,
+                            repeat: 999,
                             yoyo: true,
                             easing: 'linear',
                             easing: 'easingCubicInOut',
                             morphPrecision: 1,
-                            morphIndex: 20
+                            morphIndex: 17
                         })
 
                         fillTheWaveOne.start()

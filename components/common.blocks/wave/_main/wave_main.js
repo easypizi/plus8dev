@@ -10,8 +10,6 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
             inited: function() {
                 let _this = this;
 
-
-                // console.log('yo');
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
                     loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){

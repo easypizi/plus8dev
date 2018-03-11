@@ -12,20 +12,20 @@ provide(bemDom.declBlock(this.name, {
               this.cross = this.findChildElem('cross');
               this.midscreen = this.findChildElem('midscreen').findMixedBlock(Screen);
               this.benefits = this.findChildElems('benefits');
-
+              if (window.innerWidth > 480){
+                this.findChildBlock(Header).setMod('white');
+              }
               if(this.findChildElem('cross').hasMod('downsize', 'show')){
                   window.location.hash = 'bottom';
-                  this.findChildBlock(Header).setMod('white');
                   this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
                   this._showLinks()
                   localStorage.setItem('stateChecker', 1);
               } else {
                 window.scrollTo(0,0);
+                history.pushState(null, null, '/');
                 this._hideLinks();
                 localStorage.setItem('stateChecker', 0);
               }
-
-
             }
         }
     },
@@ -42,8 +42,6 @@ provide(bemDom.declBlock(this.name, {
                 let globalmarker = window.pageYOffset || document.documentElement.scrollTop;
                 this.midscreen = _this.findChildElem('midscreen').findMixedBlock(Screen);
                 this.debouncer = '0';
-
-                console.log();
 
                 if(localStorage.getItem('stateChecker')){
                   this.stateChecker = localStorage.getItem('stateChecker');
@@ -71,7 +69,6 @@ provide(bemDom.declBlock(this.name, {
 
                 this._events().on('show', () => {
                   if (this.debouncer === '1'){
-                    console.log('yo');
                     this._showLinks();
                   }
                 })
@@ -87,13 +84,16 @@ provide(bemDom.declBlock(this.name, {
 
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
+                  if (scrolled < screenHeight && window.location.hash !== '') {
+                    history.pushState(null, null, '/');
+                  }
+
                   // Изменение стилей Хэдера
                   if (window.innerWidth > 480){
                     if(scrolled > (screenHeight - 50)){
                       _this.findChildBlock(Header).setMod('white');
-                    } else if (scrolled < (screenHeight)) {
+                    } else if (scrolled < screenHeight) {
                       _this.findChildBlock(Header).delMod('white')
-                      history.pushState(null, null, '/');
                     }
                   }
 

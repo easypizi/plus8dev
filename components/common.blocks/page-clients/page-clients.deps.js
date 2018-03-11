@@ -1,6 +1,7 @@
 ({
     shouldDeps: [
         'header',
+        'slider',
         {
           block: 'wave',
           mods: {
