@@ -10,10 +10,28 @@ provide(bemDom.declBlock(this.name, {
                this.direction = 'right';
                this.scrollArea = this.domElem[0].scrollWidth - this.domElem[0].offsetWidth;
                this._goSlideLeft();
+               this.autoPilot = true;
+
+               this._domEvents().on('mouseenter', () => {
+                  _this.autoPilot = false
+               })
+
+               this._domEvents().on('mouseleave', () => {
+                  _this.autoPilot = true;
+                  if(_this.integer > _this.scrollArea/2){
+                   _this._goSlideRight();
+                  } else if (_this.integer < _this.scrollArea/2){
+                   _this._goSlideLeft();
+                  }
+               })
 
                // Будем превентить функцию по скроллу и запускать после.
-               this._domEvents().on('scroll', (event)=> {
-
+               this._domEvents().on('scroll', () => {
+                  if (_this.autoPilot === false) {
+                    _this.integer = _this.domElem.scrollLeft();
+                    clearInterval(_this.timerMinus);
+                    clearInterval(_this.timerPlus);
+                  }
                })
             }
         }
@@ -47,7 +65,8 @@ provide(bemDom.declBlock(this.name, {
        clearInterval(this.timerMinus);
        this._goSlideLeft();
       }
-    }
+    },
+
 }));
 
 });
