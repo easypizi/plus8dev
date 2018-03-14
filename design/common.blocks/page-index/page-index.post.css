@@ -44,6 +44,10 @@ block(page-index){
       position: absolute;
       bottom: 0;
       overflow: hidden;
+
+      &.mod(fullscreen){
+        height: 100vh;
+      }
     }
   }
 

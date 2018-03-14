@@ -40,6 +40,11 @@ block(page){
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+
+  &.mod(no-scroll){
+    overflow: hidden;
+  }
 }
 
 

@@ -1,21 +1,22 @@
 modules.define('page-index',
 
-['i-bem-dom', 'BEMHTML', 'section', 'link', 'header', 'footer', 'wave', 'screen'],
+['i-bem-dom', 'BEMHTML', 'section', 'link', 'header', 'footer', 'wave', 'screen', 'page'],
 
-function(provide, bemDom, BEMHTML, section, Link, Header, Footer, Wave, Screen) {
+function(provide, bemDom, BEMHTML, section, Link, Header, Footer, Wave, Screen, Page) {
 
 provide(bemDom.declBlock(this.name, {
 
     beforeSetMod: {
         js: {
             inited: function() {
+
               this.cross = this.findChildElem('cross');
               this.midscreen = this.findChildElem('midscreen').findMixedBlock(Screen);
               this.benefits = this.findChildElems('benefits');
-              if (window.innerWidth > 480){
-                this.findChildBlock(Header).setMod('white');
-              }
               if(this.findChildElem('cross').hasMod('downsize', 'show')){
+                  if (window.innerWidth > 480){
+                    this.findChildBlock(Header).setMod('white');
+                  }
                   window.location.hash = 'bottom';
                   this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
                   this._showLinks()
@@ -33,6 +34,22 @@ provide(bemDom.declBlock(this.name, {
     onSetMod: {
         js: {
             inited: function() {
+
+                // Делаем маркер для обозначения первого раза.
+                this.firstTime = true;
+                this.wavesContainer = this.findChildBlock(Screen).findChildElem('wave-container');
+                this.waves = this.findChildBlock(Wave);
+                this.body = this.findParentBlock(Page);
+
+
+                this._events().on('move', () => {
+                  this.body.delMod('no-scroll')
+                })
+
+
+
+
+
                 let _this = this;
                 this.cross = this.findChildElem('cross');
                 let screenHeight = window.innerHeight;
@@ -62,7 +79,6 @@ provide(bemDom.declBlock(this.name, {
                   })
                 })
 
-                // let waves = this.findChildBlock(Wave);
                 // if (scrolled > 500){
                 //   waves.setMod('show')
                 // }
@@ -81,8 +97,23 @@ provide(bemDom.declBlock(this.name, {
 
 
                 window.onscroll = function(event) {
-
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+                  if (_this.firstTime){
+                    _this.body.setMod('no-scroll');
+                    _this.wavesContainer.setMod('fullscreen');
+                    _this.waves._emit('startFullscreen');
+                    _this.firstTime = false;
+                    _this.waves._events().on('goon', () => {
+                      _this._emit('move');
+                      window.scrollTo(100, screenHeight);
+                    })
+                  }
+
+
+
+
+
 
                   if (scrolled < screenHeight && window.location.hash !== '') {
                     history.pushState(null, null, '/');

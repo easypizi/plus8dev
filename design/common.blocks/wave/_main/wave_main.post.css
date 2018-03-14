@@ -30,6 +30,12 @@ block(wave){
         }
       }
     }
+
+
+    &.mod(fullscreen){
+      width: 140vw;
+      animation: none !important;
+    }
   }
 }
 

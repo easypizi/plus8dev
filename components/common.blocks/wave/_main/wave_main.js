@@ -21,11 +21,10 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         { path: '#first' },
                         { path: '#second' },
                         {
-                            duration: 11500,
+                            duration: 8500,
                             repeat: 999,
                             yoyo: true,
-                            easing: 'linear',
-                            easing: 'easingCubicInOut',
+                            easing: 'easingSinusoidalInOut',
                             morphPrecision: 1,
                             morphIndex: 40
                         })
@@ -34,17 +33,37 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         { path: '#third' },
                         { path: '#forth' },
                         {
-                            duration: 9300,
+                            duration: 6300,
                             repeat: 999,
                             yoyo: true,
-                            easing: 'linear',
-                            easing: 'easingCubicInOut',
+                            easing: 'easingSinusoidalInOut',
                             morphPrecision: 1,
                             morphIndex: 40
                         })
 
                         fillTheWaveOne.start()
                         fillTheWaveTwo.start()
+
+                        var goOn = function(){
+                          _this._emit('goon');
+                        }
+
+                        var toFullScreen = KUTE.fromTo('#first',
+                        { path: '#first' },
+                        { path: '#fullscreen' },
+                        {
+                            duration: 1500,
+                            easing: 'easingSinusoidalIn',
+                            morphPrecision: 1,
+                            morphIndex: 1,
+                            complete: goOn
+                        })
+
+                        _this._events().on('startFullscreen', () => {
+                          fillTheWaveOne.stop()
+                          fillTheWaveTwo.stop()
+                          toFullScreen.start()
+                        })
                     })
                   })
                 })
