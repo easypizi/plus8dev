@@ -37,7 +37,8 @@
       mods: {
         // canvas: true,
         // morphing: true,
-        main: true
+        main: true,
+        submain: true
       }
     }
   ]

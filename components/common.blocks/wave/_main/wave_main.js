@@ -59,10 +59,30 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                             complete: goOn
                         })
 
+                        var fromFullScreen = KUTE.fromTo('#first',
+                        { path: '#fullscreen' },
+                        { path: '#first' },
+                        {
+                            duration: 1500,
+                            easing: 'easingSinusoidalIn',
+                            morphPrecision: 1,
+                            morphIndex: 1,
+                            complete: goOn
+                        })
+
                         _this._events().on('startFullscreen', () => {
+
+                          console.log('yo');
+                          console.log('///////////');
                           fillTheWaveOne.stop()
                           fillTheWaveTwo.stop()
                           toFullScreen.start()
+                        })
+
+                        _this._events().on('stopFullscreen', () => {
+                          fromFullScreen.start()
+                          fillTheWaveOne.start()
+                          fillTheWaveTwo.start()
                         })
                     })
                   })

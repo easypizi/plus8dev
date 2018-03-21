@@ -1,0 +1,38 @@
+block(wave){
+  position: relative;
+  width: 100vw;
+  height: 100%;
+
+  &.mod(submain){
+    block(image){
+      width: 115vw;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      display: block;
+      bottom: -50px;
+      transform: translateY(15vh);
+
+      &.mod(first){
+        -webkit-animation: dance-right 12s ease-in-out alternate infinite both;
+                animation: dance-right 12s ease-in-out alternate infinite both;
+      }
+
+
+      &.mod(second){
+        -webkit-animation: dance-left 10s ease-in-out alternate infinite both;
+                animation: dance-left 10s ease-in-out alternate infinite both;
+      }
+
+      svg {
+        width: 100%;
+        position: absolute;
+        bottom: -50px;
+        @media(max-width: 1190px){
+
+        }
+      }
+    }
+
+  }
+}

@@ -36,21 +36,12 @@ provide(bemDom.declBlock(this.name, {
             inited: function() {
 
                 // Делаем маркер для обозначения первого раза.
+                let _this = this;
                 this.firstTime = true;
                 this.wavesContainer = this.findChildBlock(Screen).findChildElem('wave-container');
-                this.waves = this.findChildBlock(Wave);
+                this.mainWaves = this.findChildBlock({block: Wave, mods: { main: true }});
                 this.body = this.findParentBlock(Page);
-
-
-                this._events().on('move', () => {
-                  this.body.delMod('no-scroll')
-                })
-
-
-
-
-
-                let _this = this;
+                this._hiddenbg = this.findChildElem('hiddenbg');
                 this.cross = this.findChildElem('cross');
                 let screenHeight = window.innerHeight;
                 this.benefits = this.findChildElems('benefits');
@@ -79,10 +70,6 @@ provide(bemDom.declBlock(this.name, {
                   })
                 })
 
-                // if (scrolled > 500){
-                //   waves.setMod('show')
-                // }
-
                 this._events().on('show', () => {
                   if (this.debouncer === '1'){
                     this._showLinks();
@@ -99,15 +86,20 @@ provide(bemDom.declBlock(this.name, {
                 window.onscroll = function(event) {
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
+                  // Раскрытие экрана на всю.
                   if (_this.firstTime){
-                    _this.body.setMod('no-scroll');
-                    _this.wavesContainer.setMod('fullscreen');
-                    _this.waves._emit('startFullscreen');
+                    console.log('yo');
+                    _this.mainWaves._emit('startFullscreen');
                     _this.firstTime = false;
-                    _this.waves._events().on('goon', () => {
-                      _this._emit('move');
-                      window.scrollTo(100, screenHeight);
-                    })
+                    _this.mainWaves.setMod('hidesecond');
+                    _this.mainWaves.setMod('fullscreen');
+
+
+
+                    // _this.mainWaves._events().on('goon', () => {
+                    //   _this._emit('move');
+                    //   window.scrollTo(100, screenHeight);
+                    // })
                   }
 
 
@@ -123,14 +115,16 @@ provide(bemDom.declBlock(this.name, {
                   if (window.innerWidth > 480){
                     if(scrolled > (screenHeight - 50)){
                       _this.findChildBlock(Header).setMod('white');
+                      _this._hiddenbg.delMod('hide')
                     } else if (scrolled < screenHeight) {
                       _this.findChildBlock(Header).delMod('white')
+                      _this._hiddenbg.setMod('hide')
                     }
                   }
 
 
-                  // waves.setMod('show');
-                  // if(waves.hasMod('show')){
+                  // mainWaves.setMod('show');
+                  // if(mainWaves.hasMod('show')){
                   //   _this.findChildElem('slogan').setMod('to-white');
                   // }
 

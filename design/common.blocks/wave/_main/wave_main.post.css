@@ -10,6 +10,9 @@ block(wave){
       position: absolute;
       z-index: -1;
       display: block;
+      bottom: -50px;
+      transform: translateY(15vh);
+      transition: all 3s;
 
       &.mod(first){
         -webkit-animation: dance-right 12s ease-in-out alternate infinite both;
@@ -24,17 +27,41 @@ block(wave){
 
       svg {
         width: 100%;
+        position: absolute;
+        bottom: -50px;
         @media(max-width: 1190px){
-          position: absolute;
-          bottom: -50px;
+
         }
       }
     }
 
 
     &.mod(fullscreen){
-      width: 140vw;
-      animation: none !important;
+      block(image){
+        width: 115vw;
+        animation: none !important;
+
+
+        svg {
+          height: 200vh;
+          bottom: -50vh;
+          display: block;
+          transform: translateX(-20vh);
+          @media(max-width: 1190px){
+
+          }
+        }
+      }
+    }
+
+
+    &.mod(hidesecond){
+      block(image){
+        &.mod(second){
+          transform: translateY(1000px);
+          opacity: 0;
+        }
+      }
     }
   }
 }
@@ -42,24 +69,39 @@ block(wave){
 
 @keyframes dance-left {
   0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+    -webkit-transform: translate(0, 15vh);
+            transform: translate(0, 15vh);
   }
 
   100% {
-    -webkit-transform: translateX(-5vw);
-            transform: translateX(-5vw);
+    -webkit-transform: translate(-5vw, 30vh);
+            transform: translate(-5vw, 30vh);
   }
 }
 
 @keyframes dance-right {
   0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+    -webkit-transform: translate(0, 15vh);
+            transform: translate(0, 15vh);
   }
 
   100% {
-    -webkit-transform: translateX(-5vw);
-            transform: translateX(-5vw);
+    -webkit-transform: translate(-5vw, 30vh);
+            transform: translate(-5vw, 30vh);
   }
 }
+
+@keyframes to-fullscreen {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-20vh, 0);
+            transform: translate(-20vh, 0);
+  }
+}
+
