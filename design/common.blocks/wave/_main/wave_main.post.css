@@ -2,6 +2,8 @@ block(wave){
   position: relative;
   width: 100vw;
   height: 100%;
+  opacity: 1;
+  transition: opacity 0.8s;
 
   &.mod(main){
     block(image){
@@ -29,10 +31,17 @@ block(wave){
         width: 100%;
         position: absolute;
         bottom: -50px;
+        transition: transform 0.5s;
+
+
         @media(max-width: 1190px){
 
         }
       }
+    }
+
+    &.mod(stop){
+      opacity: 0;
     }
 
 
@@ -40,15 +49,9 @@ block(wave){
       block(image){
         width: 115vw;
         animation: none !important;
-
-
         svg {
-          height: 200vh;
-          bottom: -50vh;
-          display: block;
-          transform: translateX(-20vh);
+          transform: scale(3) translateX(-20vh);
           @media(max-width: 1190px){
-
           }
         }
       }
@@ -102,6 +105,16 @@ block(wave){
     opacity: 0;
     -webkit-transform: translate(-20vh, 0);
             transform: translate(-20vh, 0);
+  }
+}
+
+@keyframes opacity-change {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

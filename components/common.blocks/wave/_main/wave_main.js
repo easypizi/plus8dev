@@ -17,6 +17,9 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         // let gradient1 = KUTE.to('#first-color', {attr: {'stop-color':"red"}}).start();
                         // let gradient2 = KUTE.to('#second-color', {attr: {'stop-color'="blue"}}).start();
 
+                        _this.delMod('stop')
+
+
                         var fillTheWaveOne = KUTE.fromTo('#first',
                         { path: '#first' },
                         { path: '#second' },
@@ -43,6 +46,7 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
 
                         fillTheWaveOne.start()
                         fillTheWaveTwo.start()
+
 
                         var goOn = function(){
                           _this._emit('goon');
@@ -71,9 +75,6 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         })
 
                         _this._events().on('startFullscreen', () => {
-
-                          console.log('yo');
-                          console.log('///////////');
                           fillTheWaveOne.stop()
                           fillTheWaveTwo.stop()
                           toFullScreen.start()
@@ -83,6 +84,10 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                           fromFullScreen.start()
                           fillTheWaveOne.start()
                           fillTheWaveTwo.start()
+
+                          setTimeout(()=>{
+                            fromFullScreen.stop()
+                          }, 1500)
                         })
                     })
                   })

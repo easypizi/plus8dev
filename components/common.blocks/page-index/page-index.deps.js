@@ -38,7 +38,8 @@
         // canvas: true,
         // morphing: true,
         main: true,
-        submain: true
+        submain: true,
+        stop: true
       }
     }
   ]
