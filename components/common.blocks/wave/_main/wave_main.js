@@ -75,19 +75,23 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         })
 
                         _this._events().on('startFullscreen', () => {
+
+                          console.log('Старт');
+
                           fillTheWaveOne.stop()
                           fillTheWaveTwo.stop()
                           toFullScreen.start()
                         })
 
                         _this._events().on('stopFullscreen', () => {
-                          fromFullScreen.start()
-                          fillTheWaveOne.start()
-                          fillTheWaveTwo.start()
 
+                          console.log('Стоп');
+
+                          fromFullScreen.start()
                           setTimeout(()=>{
-                            fromFullScreen.stop()
-                          }, 1500)
+                            fillTheWaveOne.start()
+                            fillTheWaveTwo.start()
+                          }, 2500)
                         })
                     })
                   })

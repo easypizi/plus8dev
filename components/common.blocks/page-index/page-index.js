@@ -50,6 +50,7 @@ provide(bemDom.declBlock(this.name, {
                 let globalmarker = window.pageYOffset || document.documentElement.scrollTop;
                 this.midscreen = _this.findChildElem('midscreen').findMixedBlock(Screen);
                 this.debouncer = '0';
+                this.isAnimate = false;
 
                 this.mainWaves._events().on('startWave', () => {
                   this.mainWaves.delMod('stop')
@@ -86,36 +87,25 @@ provide(bemDom.declBlock(this.name, {
                   }
                 })
 
+                _this.mainWaves._events().on('goon', () => {
+                    this.isAnimate = false;
+                })
+
 
                 window.onscroll = function(event) {
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
-                  // Раскрытие экрана на всю.
-                  if (_this.firstTime){
-                    console.log('yo');
-                       _this.mainWaves._emit('stopFullscreen');
-                    _this.firstTime = false;
-                    // _this.mainWaves.setMod('hidesecond');
-                    // _this.mainWaves.setMod('fullscreen');
-                  } else {
-
-                  }
-
-
-                    if (scrolled - globalmarker < 0 ){
-                       _this.mainWaves._emit('startFullscreen');
-                        console.log(_this.firstTime);
-                        console.log('/////////');
-                        _this.firstTime = true;
-                    } else if (_this.firstTime = true & scrolled - globalmarker > 0) {
+                    if (scrolled > 240 && scrolled - globalmarker > 0 && _this.firstTime === true && _this.isAnimate !== true ){
+                        _this.mainWaves._emit('startFullscreen');
+                        _this.isAnimate = true;
+                        _this.firstTime = false;
+                    } else if (_this.firstTime === false && scrolled - globalmarker < 0 && _this.isAnimate !== true && scrolled < 500) {
                         _this.mainWaves._emit('stopFullscreen');
-                        console.log(_this.firstTime);
-                        console.log('+++++++++');
-                        // _this.firstTime = false;
+                        _this.isAnimate = true;
+                        _this.firstTime = true;
                     }
 
-                    _this.mainWaves._events().on('goon', () => {
-                    })
+
 
 
 
