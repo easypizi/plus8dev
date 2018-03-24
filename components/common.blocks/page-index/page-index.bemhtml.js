@@ -6,25 +6,6 @@ block('page-index').content()(function() {
         block: 'header'
       },
       {
-        elem: 'hiddenbg',
-        elemMods: {
-          hide: true
-        },
-        content: [
-          // {
-          //   elem: 'wave-container',
-          //   content: [
-          //   {
-          //     block: 'wave',
-          //     mods: {
-          //       'submain': true,
-          //     }
-          //   }
-          //   ]
-          // }
-        ]
-      },
-      {
         elem: 'content',
         content: [
         {
@@ -221,6 +202,25 @@ block('page-index').content()(function() {
                     }
                   ]
                 },
+              ]
+            },
+            {
+              elem: 'hiddenbg',
+              elemMods: {
+                hide: true
+              },
+              content: [
+                {
+                  elem: 'wave-container',
+                  content: [
+                  {
+                    block: 'wave',
+                    mods: {
+                      'submain': true,
+                    }
+                  }
+                  ]
+                }
               ]
             },
             {

@@ -9,23 +9,43 @@ provide(bemDom.declBlock(this.name, {
     beforeSetMod: {
         js: {
             inited: function() {
-
               this.cross = this.findChildElem('cross');
               this.midscreen = this.findChildElem('midscreen').findMixedBlock(Screen);
+              this.mainWaves = this.findChildBlock({block: Wave, mods: { main: true }});
               this.benefits = this.findChildElems('benefits');
+              this._hiddenbg = this.findChildElem('hiddenbg');
+              this.mainbox = this.findChildElem('topscreen').findChildBlock(section);
+
               if(this.findChildElem('cross').hasMod('downsize', 'show')){
+
+                  this.mainWaves.setMod('fullscreen');
+                  this.mainWaves.setMod('hidesecond');
+                  this.mainWaves._emit('startFullscreen');
+                  this.mainWaves.setMod('stop')
+                  this.mainbox.setMod('hidden');
                   if (window.innerWidth > 480){
                     this.findChildBlock(Header).setMod('white');
                   }
-                  window.location.hash = 'bottom';
+
                   this.findChildElem('wrapper').findMixedBlock(section).delMod('hide');
+                  this.findChildElem('topscreen').findChildBlock(section).delMod('hidden');
+
+                  this._hiddenbg.delMod('hide')
+                  this._hiddenbg.setMod('bgview')
+
+
+                  window.location.hash = 'bottom';
+                  this.isAnimate = true;
                   this._showLinks()
                   localStorage.setItem('stateChecker', 1);
+                  localStorage.setItem('firstTime', 'no')
+
               } else {
                 window.scrollTo(0,0);
                 history.pushState(null, null, '/');
                 this._hideLinks();
                 localStorage.setItem('stateChecker', 0);
+                localStorage.setItem('firstTime', 'yes')
               }
             }
         }
@@ -38,7 +58,6 @@ provide(bemDom.declBlock(this.name, {
                 // Делаем маркер для обозначения первого раза.
                 let _this = this;
                 this.firstTime = true;
-                this.wavesContainer = this.findChildBlock(Screen).findChildElem('wave-container');
                 this.mainWaves = this.findChildBlock({block: Wave, mods: { main: true }});
                 this.body = this.findParentBlock(Page);
                 this._hiddenbg = this.findChildElem('hiddenbg');
@@ -51,13 +70,17 @@ provide(bemDom.declBlock(this.name, {
                 this.midscreen = _this.findChildElem('midscreen').findMixedBlock(Screen);
                 this.debouncer = '0';
                 this.isAnimate = false;
+                this.mainbox = this.findChildElem('topscreen').findChildBlock(section);
 
-                this.mainWaves._events().on('startWave', () => {
-                  this.mainWaves.delMod('stop')
-                })
+                console.log(this.mainbox);
+
 
                 if(localStorage.getItem('stateChecker')){
                   this.stateChecker = localStorage.getItem('stateChecker');
+                }
+
+                if(localStorage.getItem('firstTime')){
+                  this.firstTime = localStorage.getItem('firstTime') === 'no' ? false : true;
                 }
 
                 this.links.map( item => {
@@ -91,25 +114,33 @@ provide(bemDom.declBlock(this.name, {
                     this.isAnimate = false;
                 })
 
+                _this.mainWaves._events().on('goOut', () => {
+                    this.isAnimate = false;
+                    this.mainbox.delMod('hidden');
+                })
+
+
 
                 window.onscroll = function(event) {
                   var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
                     if (scrolled > 240 && scrolled - globalmarker > 0 && _this.firstTime === true && _this.isAnimate !== true ){
+                        _this.mainWaves.setMod('fullscreen');
+                        _this.mainWaves.setMod('hidesecond');
                         _this.mainWaves._emit('startFullscreen');
+                        _this.mainbox.setMod('hidden');
                         _this.isAnimate = true;
                         _this.firstTime = false;
                     } else if (_this.firstTime === false && scrolled - globalmarker < 0 && _this.isAnimate !== true && scrolled < 500) {
+                        _this._hiddenbg.setMod('hide')
                         _this.mainWaves._emit('stopFullscreen');
                         _this.isAnimate = true;
                         _this.firstTime = true;
+                        setTimeout(()=>{
+                          _this.mainWaves.delMod('fullscreen');
+                          _this.mainWaves.delMod('hidesecond')
+                        }, 200)
                     }
-
-
-
-
-
-
 
                   if (scrolled < screenHeight && window.location.hash !== '') {
                     history.pushState(null, null, '/');
@@ -119,22 +150,16 @@ provide(bemDom.declBlock(this.name, {
                   if (window.innerWidth > 480){
                     if(scrolled > (screenHeight - 50)){
                       _this.findChildBlock(Header).setMod('white');
-                      _this._hiddenbg.delMod('hide')
                     } else if (scrolled < screenHeight) {
                       _this.findChildBlock(Header).delMod('white')
-                      _this._hiddenbg.setMod('hide')
                     }
                   }
-
-
-                  // mainWaves.setMod('show');
-                  // if(mainWaves.hasMod('show')){
-                  //   _this.findChildElem('slogan').setMod('to-white');
-                  // }
 
                   if ( scrolled - globalmarker > 0 && scrolled > screenHeight && _this.stateChecker === '0' ){
                       _this.debouncer = '1';
                       _this._emit('show');
+                      _this._hiddenbg.delMod('hide')
+                      _this._hiddenbg.setMod('bgview')
                   } else if (scrolled - globalmarker < 0 && scrolled < (screenHeight) && _this.stateChecker === '1') {
                       _this.debouncer = '1';
                     _this._emit('hide');

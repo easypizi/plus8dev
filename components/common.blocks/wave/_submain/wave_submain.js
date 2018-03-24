@@ -14,9 +14,10 @@ provide(Wave.declMod({ modName: 'submain', modVal: true }, {
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
                     loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){
 
-                        var fillTheWaveOne = KUTE.fromTo('#first',
-                        { path: '#first' },
-                        { path: '#second' },
+                        console.log('1');
+                        var fillTheWaveOne = KUTE.fromTo('#fifth',
+                        { path: '#fifth' },
+                        { path: '#sixth' },
                         {
                             duration: 8500,
                             repeat: 999,
@@ -26,9 +27,9 @@ provide(Wave.declMod({ modName: 'submain', modVal: true }, {
                             morphIndex: 40
                         })
 
-                        var fillTheWaveTwo = KUTE.fromTo('#third',
-                        { path: '#third' },
-                        { path: '#forth' },
+                        var fillTheWaveTwo = KUTE.fromTo('#seventh',
+                        { path: '#seventh' },
+                        { path: '#eigth' },
                         {
                             duration: 6300,
                             repeat: 999,

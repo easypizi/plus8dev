@@ -19,7 +19,6 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
 
                         _this.delMod('stop')
 
-
                         var fillTheWaveOne = KUTE.fromTo('#first',
                         { path: '#first' },
                         { path: '#second' },
@@ -52,6 +51,10 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                           _this._emit('goon');
                         }
 
+                        var goOut = function(){
+                          _this._emit('goOut');
+                        }
+
                         var toFullScreen = KUTE.fromTo('#first',
                         { path: '#first' },
                         { path: '#fullscreen' },
@@ -71,26 +74,18 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                             easing: 'easingSinusoidalIn',
                             morphPrecision: 1,
                             morphIndex: 1,
-                            complete: goOn
+                            complete: goOut
                         })
 
                         _this._events().on('startFullscreen', () => {
-
-                          console.log('Старт');
-
                           fillTheWaveOne.stop()
-                          fillTheWaveTwo.stop()
                           toFullScreen.start()
                         })
 
                         _this._events().on('stopFullscreen', () => {
-
-                          console.log('Стоп');
-
                           fromFullScreen.start()
                           setTimeout(()=>{
                             fillTheWaveOne.start()
-                            fillTheWaveTwo.start()
                           }, 2500)
                         })
                     })

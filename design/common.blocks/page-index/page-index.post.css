@@ -22,15 +22,23 @@ block(page-index){
   elem(hiddenbg){
     position: fixed;
     z-index: -5;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    background: -webkit-linear-gradient(148deg, rgb(255, 0, 241), rgb(255, 0, 93));
-    background: -o-linear-gradient(148deg, rgb(255, 0, 241), rgb(255, 0, 93));
-    background: linear-gradient(238deg, rgb(255, 0, 241), rgb(255, 0, 93));
     transition: all 2s;
     height: 100vh;
+    opacity: 1;
+    width: 100%;
+    transition: background 1s opacity 1s;
+    will-change: scroll-position;
+
+    &.mod(bgview){
+      background: -webkit-linear-gradient(148deg, rgb(255, 0, 241), rgb(255, 0, 93));
+      background: -o-linear-gradient(148deg, rgb(255, 0, 241), rgb(255, 0, 93));
+      background: linear-gradient(238deg, rgb(255, 0, 241), rgb(255, 0, 93));
+    }
+
+    &.mod(hide){
+      opacity: 0;
+    }
 
     elem(wave-container){
       width: 100%;
@@ -38,15 +46,6 @@ block(page-index){
       position: fixed;
       bottom: 0;
       overflow: hidden;
-
-      &.mod(hide){
-        display: none;
-      }
-    }
-
-    &.mod(hide){
-      visibility: hidden;
-      opacity: 0;
     }
   }
 
@@ -71,6 +70,7 @@ block(page-index){
       position: fixed;
       bottom: 0;
       overflow: hidden;
+      z-index: -6;
 
       &.mod(hide){
         display: none;
@@ -95,6 +95,13 @@ block(page-index){
       display: flex;
       max-width: 665px;
       justify-content: space-between;
+      transition: opacity 3s;
+      opacity: 1;
+      will-change: scroll-position;
+
+      &.mod(hidden){
+        opacity: 0;
+      }
 
       @media(max-width: 760px){
         height: 235px;
@@ -126,11 +133,6 @@ block(page-index){
     align-items: center;
     will-change: scroll-position;
     transform: translateZ();
-
-/*    &.mod(fixed){
-      position: absolute;
-      top: 0;
-    }*/
 
     block(section){
       height: 350px;

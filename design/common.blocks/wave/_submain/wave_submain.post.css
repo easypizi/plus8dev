@@ -1,8 +1,4 @@
 block(wave){
-  position: relative;
-  width: 100vw;
-  height: 100%;
-
   &.mod(submain){
     block(image){
       width: 115vw;
@@ -11,15 +7,18 @@ block(wave){
       z-index: -1;
       display: block;
       bottom: -50px;
-      transform: translateY(15vh);
+      transform: translateY(1000px);
+      transition: transform 1s;
+      -webkit-animation: move-right 2s ease forwards;
+              animation: move-right 2s ease forwards;
 
-      &.mod(first){
+      &.mod(third){
         -webkit-animation: dance-right 12s ease-in-out alternate infinite both;
                 animation: dance-right 12s ease-in-out alternate infinite both;
       }
 
 
-      &.mod(second){
+      &.mod(forth){
         -webkit-animation: dance-left 10s ease-in-out alternate infinite both;
                 animation: dance-left 10s ease-in-out alternate infinite both;
       }
@@ -34,5 +33,16 @@ block(wave){
       }
     }
 
+  }
+}
+
+
+@keyframes opacity-change {
+  0% {
+      transform: translateY(2000px);
+  }
+
+  100% {
+      transform: translateY(15vh);
   }
 }
