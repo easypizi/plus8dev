@@ -127,7 +127,6 @@ provide(bemDom.declBlock(this.name, {
 
                   if (scrolled > 240 && scrolled - globalmarker > 0 && _this.firstTime === true && _this.isAnimate !== true ){
                       _this.body.setMod('no-scroll');
-
                       _this.mainWaves.setMod('fullscreen');
                       _this.mainWaves._emit('startFullscreen');
                       _this.subwaves._emit('startSubmain');
