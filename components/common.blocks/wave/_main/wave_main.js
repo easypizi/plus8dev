@@ -12,12 +12,7 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
 
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
-                    loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){
 
-                        // let gradient1 = KUTE.to('#first-color', {attr: {'stop-color':"red"}}).start();
-                        // let gradient2 = KUTE.to('#second-color', {attr: {'stop-color'="blue"}}).start();
-
-                        _this.delMod('stop')
 
                         var fillTheWaveOne = KUTE.fromTo('#first',
                         { path: '#first' },
@@ -27,8 +22,8 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                             repeat: 999,
                             yoyo: true,
                             easing: 'easingSinusoidalInOut',
-                            morphPrecision: 1,
-                            morphIndex: 40
+                            morphPrecision: 2,
+                            morphIndex: 1
                         })
 
                         var fillTheWaveTwo = KUTE.fromTo('#third',
@@ -39,12 +34,16 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                             repeat: 999,
                             yoyo: true,
                             easing: 'easingSinusoidalInOut',
-                            morphPrecision: 1,
-                            morphIndex: 40
+                            morphPrecision: 2,
+                            morphIndex: 1
                         })
 
                         fillTheWaveOne.start()
                         fillTheWaveTwo.start()
+
+                        setTimeout( () => {
+                          _this.setMod('show')
+                        }, 1500)
 
 
                         var goOn = function(){
@@ -61,7 +60,7 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         {
                             duration: 1500,
                             easing: 'easingSinusoidalIn',
-                            morphPrecision: 1,
+                            morphPrecision: 20,
                             morphIndex: 1,
                             complete: goOn
                         })
@@ -72,23 +71,24 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         {
                             duration: 1500,
                             easing: 'easingSinusoidalIn',
-                            morphPrecision: 1,
+                            morphPrecision: 20,
                             morphIndex: 1,
                             complete: goOut
                         })
 
                         _this._events().on('startFullscreen', () => {
+
                           fillTheWaveOne.stop()
                           toFullScreen.start()
                         })
 
                         _this._events().on('stopFullscreen', () => {
+
                           fromFullScreen.start()
                           setTimeout(()=>{
                             fillTheWaveOne.start()
                           }, 2500)
                         })
-                    })
                   })
                 })
 

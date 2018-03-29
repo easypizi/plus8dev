@@ -4,9 +4,6 @@ block(header){
   justify-content: flex-end;
   padding: 32px 49px;
   box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  z-index: 1;
 
   @media(max-width: 760px){
     padding: 31px 24px;

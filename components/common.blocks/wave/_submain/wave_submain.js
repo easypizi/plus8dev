@@ -12,10 +12,8 @@ provide(Wave.declMod({ modName: 'submain', modVal: true }, {
 
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
-                    loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-attr.js', function(){
 
-                        console.log('1');
-                        var fillTheWaveOne = KUTE.fromTo('#fifth',
+                        var fillTheSubWaveOne = KUTE.fromTo('#fifth',
                         { path: '#fifth' },
                         { path: '#sixth' },
                         {
@@ -27,21 +25,18 @@ provide(Wave.declMod({ modName: 'submain', modVal: true }, {
                             morphIndex: 40
                         })
 
-                        var fillTheWaveTwo = KUTE.fromTo('#seventh',
-                        { path: '#seventh' },
-                        { path: '#eigth' },
-                        {
-                            duration: 6300,
-                            repeat: 999,
-                            yoyo: true,
-                            easing: 'easingSinusoidalInOut',
-                            morphPrecision: 1,
-                            morphIndex: 40
+                        _this._events().on('startSubmain', () => {
+                            console.log('Пошла доп волна!');
+                            setTimeout( () => {
+                              _this.delMod('stop')
+                              fillTheSubWaveOne.start()
+                            }, 2000)
                         })
 
-                        fillTheWaveOne.start()
-                        fillTheWaveTwo.start()
-                    })
+                        _this._events().on('stopSubmain', () => {
+                            console.log('Стоп доп волна!');
+                            _this.setMod('show')
+                        })
                   })
                 })
 

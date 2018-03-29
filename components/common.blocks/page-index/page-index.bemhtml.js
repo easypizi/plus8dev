@@ -45,8 +45,7 @@ block('page-index').content()(function() {
               {
                 block: 'wave',
                 mods: {
-                  main: true,
-                  stop: true
+                  main: true
                 }
               }
               ]
@@ -216,7 +215,7 @@ block('page-index').content()(function() {
                   {
                     block: 'wave',
                     mods: {
-                      'submain': true,
+                      submain : true
                     }
                   }
                   ]

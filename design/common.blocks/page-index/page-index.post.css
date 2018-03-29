@@ -184,6 +184,7 @@ block(page-index){
     opacity: 0;
     will-change: scroll-position;
     transform: translateZ();
+    transition: opacity 1s;
     -webkit-animation: opacityLeft 1s ease-in-out forwards;
             animation: opacityLeft 1s ease-in-out forwards;
 

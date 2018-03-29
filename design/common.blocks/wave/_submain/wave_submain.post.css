@@ -1,4 +1,6 @@
 block(wave){
+  opacity: 0;
+
   &.mod(submain){
     block(image){
       width: 115vw;
@@ -7,42 +9,20 @@ block(wave){
       z-index: -1;
       display: block;
       bottom: -50px;
-      transform: translateY(1000px);
-      transition: transform 1s;
+      right: -5%;
       -webkit-animation: move-right 2s ease forwards;
               animation: move-right 2s ease forwards;
-
-      &.mod(third){
-        -webkit-animation: dance-right 12s ease-in-out alternate infinite both;
-                animation: dance-right 12s ease-in-out alternate infinite both;
-      }
-
-
-      &.mod(forth){
-        -webkit-animation: dance-left 10s ease-in-out alternate infinite both;
-                animation: dance-left 10s ease-in-out alternate infinite both;
-      }
 
       svg {
         width: 100%;
         position: absolute;
         bottom: -50px;
-        @media(max-width: 1190px){
-
-        }
       }
     }
 
   }
-}
 
-
-@keyframes opacity-change {
-  0% {
-      transform: translateY(2000px);
-  }
-
-  100% {
-      transform: translateY(15vh);
+  &.mod(show){
+    opacity: 1;
   }
 }

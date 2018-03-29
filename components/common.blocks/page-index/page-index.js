@@ -71,8 +71,8 @@ provide(bemDom.declBlock(this.name, {
                 this.debouncer = '0';
                 this.isAnimate = false;
                 this.mainbox = this.findChildElem('topscreen').findChildBlock(section);
+                this.subwaves = this._hiddenbg.findChildBlock({ block: Wave, mods: { submain: true }});
 
-                console.log(this.mainbox);
 
 
                 if(localStorage.getItem('stateChecker')){
@@ -128,15 +128,19 @@ provide(bemDom.declBlock(this.name, {
                         _this.mainWaves.setMod('fullscreen');
                         _this.mainWaves.setMod('hidesecond');
                         _this.mainWaves._emit('startFullscreen');
+                        _this.subwaves._emit('startSubmain');
                         _this.mainbox.setMod('hidden');
+                        _this.findChildBlock(Header).setMod('white');
                         _this.isAnimate = true;
                         _this.firstTime = false;
                     } else if (_this.firstTime === false && scrolled - globalmarker < 0 && _this.isAnimate !== true && scrolled < 500) {
                         _this._hiddenbg.setMod('hide')
                         _this.mainWaves._emit('stopFullscreen');
+                        _this.subwaves._emit('stopSubmain');
                         _this.isAnimate = true;
                         _this.firstTime = true;
                         setTimeout(()=>{
+                          _this.findChildBlock(Header).delMod('white')
                           _this.mainWaves.delMod('fullscreen');
                           _this.mainWaves.delMod('hidesecond')
                         }, 200)
@@ -144,15 +148,6 @@ provide(bemDom.declBlock(this.name, {
 
                   if (scrolled < screenHeight && window.location.hash !== '') {
                     history.pushState(null, null, '/');
-                  }
-
-                  // Изменение стилей Хэдера
-                  if (window.innerWidth > 480){
-                    if(scrolled > (screenHeight - 50)){
-                      _this.findChildBlock(Header).setMod('white');
-                    } else if (scrolled < screenHeight) {
-                      _this.findChildBlock(Header).delMod('white')
-                    }
                   }
 
                   if ( scrolled - globalmarker > 0 && scrolled > screenHeight && _this.stateChecker === '0' ){

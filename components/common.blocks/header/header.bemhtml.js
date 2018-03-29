@@ -46,15 +46,6 @@ block('header').content()(function() {
         { block: 'text', mods: { caps: true } },
         { block: 'font', mods: { family: 'bold' } }
       ],
-      url: '/',
-      content: 'hire us'
-    },
-    {
-      block: 'link',
-      mix: [
-        { block: 'text', mods: { caps: true } },
-        { block: 'font', mods: { family: 'bold' } }
-      ],
       url: 'mailto:hire@plus8.pro',
       content: 'hire@plus8.pro'
     }
