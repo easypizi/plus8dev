@@ -1,6 +1,7 @@
 block('page-index').js()(true)
 
 block('page-index').content()(function() {
+
   return [
       {
         block: 'header'
@@ -15,6 +16,9 @@ block('page-index').content()(function() {
           content: [
             {
               block: 'section',
+              mods: {
+                hide: this.ctx.content[0].hidden
+              },
               mix: { block: 'page-index', elem: 'mainbox' },
               content: [
               {
@@ -38,9 +42,6 @@ block('page-index').content()(function() {
             },
             {
               elem: 'wave-container',
-              elemMods: {
-                // hide: true
-              },
               content: [
               {
                 block: 'wave',

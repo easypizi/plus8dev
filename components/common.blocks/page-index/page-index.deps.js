@@ -16,7 +16,10 @@
       }
     },
     {
-      block: 'section'
+      block: 'section',
+      mods: {
+        hide: 'me'
+      }
     },
     {
       block: 'icon',
@@ -35,8 +38,6 @@
     {
       block: 'wave',
       mods: {
-        // canvas: true,
-        // morphing: true,
         main: true,
         submain: true,
         stop: true

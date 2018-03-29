@@ -10,8 +10,12 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
             inited: function() {
                 let _this = this;
 
+
                 loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute.js', function(){
                   loader('https://cdn.jsdelivr.net/npm/kute.js@1.6.5/kute-svg.js', function(){
+
+
+                        _this._emit('loaded');
 
 
                         var fillTheWaveOne = KUTE.fromTo('#first',
@@ -77,13 +81,11 @@ provide(Wave.declMod({ modName: 'main', modVal: true }, {
                         })
 
                         _this._events().on('startFullscreen', () => {
-
                           fillTheWaveOne.stop()
                           toFullScreen.start()
                         })
 
                         _this._events().on('stopFullscreen', () => {
-
                           fromFullScreen.start()
                           setTimeout(()=>{
                             fillTheWaveOne.start()

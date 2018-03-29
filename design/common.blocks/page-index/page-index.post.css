@@ -58,6 +58,7 @@ block(page-index){
   block(screen){
   will-change: scroll-position;
   transform: translateZ();
+
     &.mod(movable, show){
       position: fixed;
       bottom: -1px;
@@ -99,7 +100,7 @@ block(page-index){
       opacity: 1;
       will-change: scroll-position;
 
-      &.mod(hidden){
+      &.mod(hide me){
         opacity: 0;
       }
 
@@ -459,8 +460,8 @@ body { overflow: -moz-scrollbars-none; }
   }
 
   100% {
-    -webkit-transform: scale(100);
-            transform: scale(100);
+    -webkit-transform: scale(120);
+            transform: scale(120);
   }
 }
 

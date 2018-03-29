@@ -64,7 +64,8 @@ module.exports = function( app ) {
           bundle: 'desktop',
           title: 'PLUS8',
           data: {
-            comeback: 'show'
+            comeback: 'show',
+            hide: 'me'
           }
           })
       } else {
@@ -73,7 +74,8 @@ module.exports = function( app ) {
           bundle: 'desktop',
           title: 'PLUS8',
           data: {
-            comeback: 'hide'
+            comeback: 'hide',
+            hide: 'no'
           }
           })
       }
