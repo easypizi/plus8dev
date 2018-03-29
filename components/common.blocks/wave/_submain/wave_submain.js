@@ -28,14 +28,14 @@ provide(Wave.declMod({ modName: 'submain', modVal: true }, {
                         _this._events().on('startSubmain', () => {
                             console.log('Пошла доп волна!');
                             setTimeout( () => {
-                              _this.delMod('stop')
+                              _this.setMod('show')
                               fillTheSubWaveOne.start()
                             }, 2000)
                         })
 
                         _this._events().on('stopSubmain', () => {
                             console.log('Стоп доп волна!');
-                            _this.setMod('show')
+                            _this.delMod('show')
                         })
                   })
                 })
