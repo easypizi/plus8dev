@@ -106,10 +106,12 @@ provide(bemDom.declBlock(this.name, {
                 // Проверка на то, может ли волна раскрыться в данный момент или нет.
                 _this.mainWaves._events().on('goon', () => {
                     this.isAnimate = false;
+                    this.body.delMod('no-scroll');
                 })
                 _this.mainWaves._events().on('goOut', () => {
                     this.isAnimate = false;
                     this.mainbox.delMod('hide', 'me');
+                    this.body.delMod('no-scroll');
                 })
 
 
@@ -124,16 +126,19 @@ provide(bemDom.declBlock(this.name, {
                   }
 
                   if (scrolled > 240 && scrolled - globalmarker > 0 && _this.firstTime === true && _this.isAnimate !== true ){
+                      _this.body.setMod('no-scroll');
+
                       _this.mainWaves.setMod('fullscreen');
                       _this.mainWaves._emit('startFullscreen');
                       _this.subwaves._emit('startSubmain');
-
                       _this.mainbox.setMod('hide', 'me');
                       _this.findChildBlock(Header).setMod('white');
                       _this.isAnimate = true;
                       _this.firstTime = false;
+                      window.scrollTo( 0, screenHeight - 100 );
                   } else if (_this.firstTime === false && scrolled - globalmarker < 0 && _this.isAnimate !== true && scrolled < 500) {
-                      _this._hiddenbg.setMod('hide')
+                      _this.body.delMod('no-scroll');
+                      _this._hiddenbg.setMod('hide');
                       _this.mainWaves._emit('stopFullscreen');
                       _this.subwaves._emit('stopSubmain');
 

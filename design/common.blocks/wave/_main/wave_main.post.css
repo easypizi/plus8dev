@@ -20,12 +20,20 @@ block(wave){
         left: -5%;
         -webkit-animation: dance-right 12s ease-in-out alternate infinite both;
                 animation: dance-right 12s ease-in-out alternate infinite both;
+        @media(max-width: 420px){
+          animation: none;
+        }
       }
 
 
       &.mod(second){
         -webkit-animation: dance-left 10s ease-in-out alternate infinite both;
                 animation: dance-left 10s ease-in-out alternate infinite both;
+
+        @media(max-width: 420px){
+          animation: none;
+        }
+
       }
 
       svg {
@@ -35,8 +43,9 @@ block(wave){
         transition: all 1.3s;
 
 
-        @media(max-width: 1190px){
-
+        @media(max-width: 420px){
+          bottom: 0;
+          height: 400px;
         }
       }
     }
@@ -54,8 +63,8 @@ block(wave){
         svg {
           transform: scale(5) translateX(-20vh);
 
-          @media(max-width: 768px){
-            transform: scale(15);
+          @media(max-width: 420px){
+            transform: scale(18);
           }
         }
 
