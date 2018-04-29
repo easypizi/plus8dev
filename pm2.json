@@ -1,0 +1,17 @@
+{
+  "apps" : [{
+    "name"               : "plus8",
+    "script"             : "./server/index.js",
+    "watch"              : true,
+    "instances"          : 4,
+    "exec_mode"          : "cluster",
+    "merge_logs"         : true,
+    "max_memory_restart" : "256M",
+    "env": {
+       "NODE_ENV": "development",
+     },
+     "env_production" : {
+        "NODE_ENV": "production"
+     }
+  }]
+}
