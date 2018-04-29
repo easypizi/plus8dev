@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   staticFolder: 'static',
-  defaultPort: 22,
+  defaultPort: 3000,
   cacheTTL: 30000,
   sessionSecret: 'VI_VERI_VENIVERSUM_VIVUS_VICI'
 };
