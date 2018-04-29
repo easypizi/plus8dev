@@ -90,7 +90,7 @@ if (isDev) {
 
 isSocket && fs.existsSync(port) && fs.unlinkSync(port);
 
-app.listen(port, function() {
+app.listen(port, '127.0.0.1', function() {
   isSocket && fs.chmod(port, '0777');
   console.log('Server is listening on', this.address().port);
 });
